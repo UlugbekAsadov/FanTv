@@ -1,6 +1,6 @@
 export interface IRegisterRequest {
   username: string;
-  email: string;
+  phoneNumber: string;
   password: string;
 }
 
@@ -9,6 +9,6 @@ export interface IRegisterForm extends IRegisterRequest {
 }
 
 export interface ILoginForm {
-  email: string;
+  phoneNumber: string;
   password: string;
 }

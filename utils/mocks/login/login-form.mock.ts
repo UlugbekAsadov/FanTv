@@ -2,12 +2,12 @@ import { ILoginForm, IRegisterForm } from '@/utils/interfaces/auth.interface';
 
 export const registerFormMock: IRegisterForm = {
   confirmPassword: '',
-  email: '',
+  phoneNumber: '',
   password: '',
   username: '',
 };
 
 export const loginFormMock: ILoginForm = {
-  email: '',
+  phoneNumber: '',
   password: '',
 };

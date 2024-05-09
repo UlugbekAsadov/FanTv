@@ -1,3 +1,5 @@
+import 'react-phone-number-input/style.css';
+
 import { Metadata } from 'next';
 import Image from 'next/image';
 
