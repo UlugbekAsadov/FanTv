@@ -68,9 +68,13 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border m-0 p-0;
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .form_error_message {
+    @apply text-red-500 text-xs m-0;
   }
 }
