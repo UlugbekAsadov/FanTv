@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { ILoginForm } from '@/utils/interfaces/auth.interface';
 import { loginFormMock } from '@/utils/mocks/login/login-form.mock';
 
-export function Page() {
+function Page() {
   const {
     register,
     handleSubmit,

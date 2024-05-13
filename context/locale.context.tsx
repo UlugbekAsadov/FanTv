@@ -42,7 +42,7 @@ function useDelayedRender<T>(asyncFun: () => Promise<T>, deps = []) {
         console.error(e);
       }
     })();
-  }, [deps, asyncFun]);
+  }, deps);
   return output === undefined ? null : output;
 }
 

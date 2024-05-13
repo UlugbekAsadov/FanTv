@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { IRegisterForm } from '@/utils/interfaces/auth.interface';
 import { registerFormMock } from '@/utils/mocks/login/login-form.mock';
 
-export const Page = () => {
+const Page = () => {
   const {
     register,
     handleSubmit,

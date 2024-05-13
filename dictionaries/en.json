@@ -1,1 +1,25 @@
-{ "hello": "Hello" }
+{
+  "hello": "Hello",
+  "sidebar": {
+    "add_new_block": "Add new blog",
+    "background": "Background",
+    "text": "Text",
+    "link": "Link"
+  },
+  "settings": {
+    "background": {
+      "edit_background": "Edit background"
+    },
+    "link": {
+      "edit_link": "Edit link",
+      "edit_link_text": "Edit link text",
+      "edit_link_color": "Edit link color",
+      "edit_link_bg_color": "Edit link background color"
+    },
+    "text": {
+      "edit_text": "Edit text",
+      "edit_text_value": "Edit text text",
+      "edit_text_color": "Edit text color"
+    }
+  }
+}
