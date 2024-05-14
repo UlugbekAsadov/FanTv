@@ -14,7 +14,8 @@
       "edit_link": "Edit link",
       "edit_link_text": "Edit link text",
       "edit_link_color": "Edit link color",
-      "edit_link_bg_color": "Edit link background color"
+      "edit_link_bg_color": "Edit link background color",
+      "edit_link_href": "Edit link url"
     },
     "text": {
       "edit_text": "Edit text",

@@ -8,6 +8,7 @@ export const LinkSetting = () => {
   const [text, setText] = useBlogValues('text');
   const [bgColor, setBgColor] = useBlogValues('backgroundColor');
   const [color, setColor] = useBlogValues('color');
+  const [href, setHref] = useBlogValues('link');
 
   return (
     <div>
@@ -17,7 +18,19 @@ export const LinkSetting = () => {
       <div className="px-4 flex flex-col space-y-3">
         <div>
           <h3 className="">{t('settings.link.edit_link_text')}</h3>
-          <Input value={text} onChange={(e) => setText(e.target.value)} />
+          <Input
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+        </div>
+        <div>
+          <h3 className="">{t('settings.link.edit_link_href')}</h3>
+          <Input
+            type="text"
+            value={href}
+            onChange={(e) => setHref(e.target.value)}
+          />
         </div>
         <div>
           <h3 className="">{t('settings.link.edit_link_bg_color')}</h3>

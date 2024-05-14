@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { usePhoneContext } from '@/context/phone.context';
 import { IAddedBlog } from '@/utils/interfaces/blog.interface';
 
@@ -8,17 +10,23 @@ interface IProps {
 }
 
 export const LinkBlog = ({ addedBlog }: IProps) => {
-  const { color, text, backgroundColor, type, id } = addedBlog;
+  const { color, text, backgroundColor, type, id, link } = addedBlog;
   const { handleClickBlogOnScreen, editingId } = usePhoneContext();
+
   return (
     <div className="relative">
-      <button
-        onClick={handleClickBlogOnScreen.bind(null, type, id)}
-        style={{ background: backgroundColor, color }}
-        className="w-full rounded-2xl px-4 py-4 break-before-all min-h-[56px] h-full"
+      <Link
+        className="block  min-h-[56px] h-full w-full rounded-2xl"
+        href={link || '#'}
       >
-        {text}
-      </button>
+        <div
+          onClick={handleClickBlogOnScreen.bind(null, type, id)}
+          style={{ background: backgroundColor, color }}
+          className="w-full rounded-2xl text-center px-4 py-4 break-before-all h-full"
+        >
+          {text}
+        </div>
+      </Link>
       {editingId === id ? <BlogActions blogId={editingId} /> : null}
     </div>
   );
