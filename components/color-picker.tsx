@@ -16,7 +16,7 @@ export const ColorPicker = ({ color, onChange }: IProps) => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <div className="border rounded-md p-2 flex items-center gap-2 ">
         <PaintbrushIcon />
         <div

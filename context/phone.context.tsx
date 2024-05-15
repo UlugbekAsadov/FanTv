@@ -25,7 +25,7 @@ interface IPhoneContext {
   handleAddBlog: (blog: IBlog) => void;
   setCurrentScreenSize: Dispatch<SetStateAction<IPhoneSize>>;
   template: ITemplate;
-  handleChangeBackgroundColor: (color: string, secondColor?: string) => void;
+  handleChangeBackgroundColor: (color: string) => void;
   handleClickBlogOnScreen: (blogType: Blog, blogId: string) => void;
   handleRemoveBlog: (blogId: string) => void;
   editingId: string | null;
@@ -68,13 +68,8 @@ export const PhoneContextProvider = ({ children }: IProps) => {
     setEditingId(blogId);
   };
 
-  const handleChangeBackgroundColor = (color: string, secondColor?: string) => {
-    let backgroundColor = color;
-    if (secondColor) {
-      backgroundColor = `linear-gradient(${color} ${secondColor})`;
-    }
-
-    setTemplate((prevState) => ({ ...prevState, background: backgroundColor }));
+  const handleChangeBackgroundColor = (color: string) => {
+    setTemplate((prevState) => ({ ...prevState, background: color }));
   };
 
   const handleClickBlogOnScreen = (blogType: Blog, blogId: string) => {

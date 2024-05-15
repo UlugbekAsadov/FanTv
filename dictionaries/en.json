@@ -8,7 +8,11 @@
   },
   "settings": {
     "background": {
-      "edit_background": "Edit background"
+      "edit_background": "Edit background",
+      "solid": "Solid",
+      "gradient": "Gradiend",
+      "first_color": "First Colour",
+      "second_color": "Second Colour"
     },
     "link": {
       "edit_link": "Edit link",
