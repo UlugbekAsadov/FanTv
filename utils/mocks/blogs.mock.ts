@@ -18,6 +18,11 @@ export const defaultSettings: IDefaultSetting = {
     text: 'New Button',
     type: 'Button',
     link: undefined,
+    fontSize: '16',
+    borderRadius: '8',
+    width: '100',
+    blogPosition: 'center',
+    position: 'center',
   },
   Text: {
     id: v4(),
@@ -26,5 +31,7 @@ export const defaultSettings: IDefaultSetting = {
     type: 'Text',
     backgroundColor: undefined,
     link: undefined,
+    fontSize: '16',
+    position: 'center',
   },
 };

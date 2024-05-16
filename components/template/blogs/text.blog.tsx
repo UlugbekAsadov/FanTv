@@ -7,14 +7,17 @@ interface IProps {
   addedBlog: IAddedBlog;
 }
 export const TextBlog = ({ addedBlog }: IProps) => {
-  const { color, text, type, id } = addedBlog;
+  const { color, text, type, id, fontSize, position } = addedBlog;
   const { handleClickBlogOnScreen, editingId } = usePhoneContext();
-
   return (
     <div className="relative">
       <p
         onClick={handleClickBlogOnScreen.bind(null, type, id)}
-        style={{ color: color }}
+        style={{
+          color: color,
+          fontSize: `${fontSize}px`,
+          textAlign: position,
+        }}
         className="text-center break-before-all break-words min-h-[24px] h-full"
       >
         {text}

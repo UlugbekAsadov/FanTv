@@ -10,19 +10,41 @@ interface IProps {
 }
 
 export const LinkBlog = ({ addedBlog }: IProps) => {
-  const { color, text, backgroundColor, type, id, link } = addedBlog;
+  const {
+    color,
+    text,
+    backgroundColor,
+    type,
+    id,
+    link,
+    borderRadius,
+    fontSize,
+    width,
+    position,
+    blogPosition,
+  } = addedBlog;
   const { handleClickBlogOnScreen, editingId } = usePhoneContext();
 
   return (
     <div className="relative">
       <Link
-        className="block  min-h-[56px] h-full w-full rounded-2xl"
+        className="  min-h-[56px] h-full overflow-hidden w-full flex flex-col"
         href={link || '#'}
+        style={{
+          alignItems: blogPosition,
+        }}
       >
         <div
           onClick={handleClickBlogOnScreen.bind(null, type, id)}
-          style={{ background: backgroundColor, color }}
-          className="w-full rounded-2xl text-center px-4 py-4 break-before-all h-full"
+          style={{
+            background: backgroundColor,
+            color,
+            width: `${width}%`,
+            textAlign: position,
+            fontSize: `${fontSize}px`,
+            borderRadius: `${borderRadius}px`,
+          }}
+          className="w-full px-4 py-4 break-before-all h-full"
         >
           {text}
         </div>

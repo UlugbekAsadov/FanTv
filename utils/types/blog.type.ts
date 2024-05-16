@@ -7,3 +7,5 @@ export type EditableBlog = Exclude<Blog, 'Background'>;
 export type IDefaultSetting = {
   [key in EditableBlog]: IAddedBlog;
 };
+
+export type BlogPositions = 'start' | 'center' | 'end';
