@@ -10,8 +10,11 @@ export const BlogActions = ({ blogId }: IProps) => {
   const { handleRemoveBlog } = usePhoneContext();
 
   return (
-    <div className="absolute -left-24 bottom-0 bg-gray-100 rounded-full border p-3">
-      <TrashIcon onClick={handleRemoveBlog.bind(null, blogId)} />
+    <div
+      onClick={handleRemoveBlog.bind(null, blogId)}
+      className="absolute -left-24 bottom-0 bg-white rounded-full border p-3 group  cursor-pointer"
+    >
+      <TrashIcon className="text-gray-300 transition group-hover:text-black" />
     </div>
   );
 };

@@ -20,19 +20,15 @@ export const SeperatorBlog = ({ addedBlog }: IProps) => {
   const { editingId, handleClickBlogOnScreen } = usePhoneContext();
 
   return (
-    <div
-      style={{
-        alignItems: blogPosition,
-      }}
-      className="relative flex flex-col"
-    >
+    <div className="relative ">
       <div
         onClick={handleClickBlogOnScreen.bind(null, type, id)}
         style={{
           paddingBottom: `${marginBottom}px`,
+          alignItems: blogPosition,
           paddingTop: `${marginTop}px`,
         }}
-        className='w-full'
+        className="w-full flex flex-col"
       >
         <div
           style={{ width: `${width}%`, backgroundColor }}

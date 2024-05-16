@@ -14,7 +14,7 @@ export const MainLayout = ({ children }: IProps) => {
       <Header />
       <div className="flex flex-grow">
         <Sidebar />
-        <div className="flex-grow overflow-y-scroll p-4 h-[calc(100vh-57px)] bg-muted">
+        <div className="flex-grow overflow-y-scroll p-4 h-[calc(100vh-57px)] bg-muted h-full">
           {children}
         </div>
         <RightSidebar />
