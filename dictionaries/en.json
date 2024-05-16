@@ -4,7 +4,8 @@
     "add_new_block": "Add new blog",
     "background": "Background",
     "text": "Text",
-    "link": "Link"
+    "link": "Link",
+    "seperator": "Seperator"
   },
   "settings": {
     "background": {
@@ -34,7 +35,9 @@
       "center": "Center",
       "end": "End",
       "text_align": "Text align",
-      "content_position": "Content position"
+      "content_position": "Content position",
+      "margin_top": "Margin top (px)",
+      "margin_bottom": "Margin bottom (px)"
     }
   }
 }

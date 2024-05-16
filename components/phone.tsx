@@ -11,6 +11,7 @@ import { usePhoneContext } from '@/context/phone.context';
 import { IAddedBlog } from '@/utils/interfaces/blog.interface';
 
 import { LinkBlog } from './template/blogs/link.blog';
+import { SeperatorBlog } from './template/blogs/seperator.blog';
 import { TextBlog } from './template/blogs/text.blog';
 
 export const Phone = () => {
@@ -33,6 +34,9 @@ export const Phone = () => {
 
       case 'Text':
         return <TextBlog key={addedBlog.id} addedBlog={addedBlog} />;
+
+      case 'Seperator':
+        return <SeperatorBlog key={addedBlog.id} addedBlog={addedBlog} />;
     }
   };
 
@@ -44,7 +48,7 @@ export const Phone = () => {
           minHeight: `${currentScreenSize.height}px`,
           background: template.background,
         }}
-        className="[&>*]:cursor-pointer h-full scrollbar scrollbar-hide  rounded-5xl border-[15px] border-gray-900 p-3 flex flex-col space-y-2"
+        className="[&>*]:cursor-pointer h-full scrollbar scrollbar-hide  rounded-5xl border-[15px] border-gray-900 p-3 flex flex-col "
       >
         <Droppable droppableId="droppable">
           {(provided) => (
@@ -60,7 +64,6 @@ export const Phone = () => {
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      className="mt-3"
                     >
                       {getBlog(addedBlog)}
                     </div>

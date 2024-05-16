@@ -5,6 +5,7 @@ import { defaultOption } from '@/lib/utils';
 
 import { BackgroundSetting } from './right-sidebar-settings/background-setting/background.setting';
 import { LinkSetting } from './right-sidebar-settings/link.setting';
+import { SeperatorSetting } from './right-sidebar-settings/seperator.setting';
 import { TextSetting } from './right-sidebar-settings/text.setting';
 
 export const RightSidebar = () => {
@@ -14,16 +15,25 @@ export const RightSidebar = () => {
     switch (selectedBlog.type) {
       case 'Background':
         return <BackgroundSetting />;
+
       case 'Button':
         if (editingId) {
           return <LinkSetting />;
         }
         return null;
+
       case 'Text':
         if (editingId) {
           return <TextSetting />;
         }
         return null;
+
+      case 'Seperator':
+        if (editingId) {
+          return <SeperatorSetting />;
+        }
+        return null;
+
       default:
         return defaultOption(selectedBlog.type);
     }

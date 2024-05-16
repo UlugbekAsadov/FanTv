@@ -7,7 +7,8 @@ interface IProps {
   addedBlog: IAddedBlog;
 }
 export const TextBlog = ({ addedBlog }: IProps) => {
-  const { color, text, type, id, fontSize, position } = addedBlog;
+  const { color, text, type, id, fontSize, position, marginBottom, marginTop } =
+    addedBlog;
   const { handleClickBlogOnScreen, editingId } = usePhoneContext();
   return (
     <div className="relative">
@@ -17,6 +18,8 @@ export const TextBlog = ({ addedBlog }: IProps) => {
           color: color,
           fontSize: `${fontSize}px`,
           textAlign: position,
+          marginBottom: `${marginBottom}px`,
+          marginTop: `${marginTop}px`,
         }}
         className="text-center break-before-all break-words min-h-[24px] h-full"
       >

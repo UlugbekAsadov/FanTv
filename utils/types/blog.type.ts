@@ -1,6 +1,6 @@
 import { IAddedBlog } from '../interfaces/blog.interface';
 
-export type Blog = 'Background' | 'Text' | 'Button';
+export type Blog = 'Background' | 'Text' | 'Button' | 'Seperator';
 
 export type EditableBlog = Exclude<Blog, 'Background'>;
 

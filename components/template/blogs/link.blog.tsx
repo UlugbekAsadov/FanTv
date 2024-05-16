@@ -22,6 +22,8 @@ export const LinkBlog = ({ addedBlog }: IProps) => {
     width,
     position,
     blogPosition,
+    marginBottom,
+    marginTop
   } = addedBlog;
   const { handleClickBlogOnScreen, editingId } = usePhoneContext();
 
@@ -43,6 +45,8 @@ export const LinkBlog = ({ addedBlog }: IProps) => {
             textAlign: position,
             fontSize: `${fontSize}px`,
             borderRadius: `${borderRadius}px`,
+            marginBottom: `${marginBottom}px`,
+            marginTop: `${marginTop}px`,
           }}
           className="w-full px-4 py-4 break-before-all h-full"
         >

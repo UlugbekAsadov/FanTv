@@ -16,11 +16,13 @@ export interface IAddedBlog {
   type: Blog;
   color: string;
   backgroundColor?: string;
-  text: string;
+  text?: string;
   link?: string;
   fontSize?: string;
   borderRadius?: string;
   width?: string;
   blogPosition?: BlogPositions;
   position?: Positions;
+  marginTop?: string;
+  marginBottom?: string;
 }

@@ -1,4 +1,4 @@
-import { Link, Paintbrush, TextIcon } from 'lucide-react';
+import { Link, Minus, Paintbrush, TextIcon } from 'lucide-react';
 import { v4 } from 'uuid';
 
 import { IBlog } from '../interfaces/blog.interface';
@@ -8,6 +8,7 @@ export const availableBlogs: IBlog[] = [
   { icon: Paintbrush, title: 'sidebar.background', type: 'Background' },
   { icon: TextIcon, title: 'sidebar.text', type: 'Text' },
   { icon: Link, title: 'sidebar.link', type: 'Button' },
+  { icon: Minus, title: 'sidebar.seperator', type: 'Seperator' },
 ];
 
 export const defaultSettings: IDefaultSetting = {
@@ -23,6 +24,8 @@ export const defaultSettings: IDefaultSetting = {
     width: '100',
     blogPosition: 'center',
     position: 'center',
+    marginTop: '5',
+    marginBottom: '5',
   },
   Text: {
     id: v4(),
@@ -33,5 +36,17 @@ export const defaultSettings: IDefaultSetting = {
     link: undefined,
     fontSize: '16',
     position: 'center',
+    marginTop: '5',
+    marginBottom: '5',
+  },
+  Seperator: {
+    id: v4(),
+    color: '#000000',
+    type: 'Seperator',
+    backgroundColor: '#000000',
+    blogPosition: 'center',
+    width: '100',
+    marginBottom: '10',
+    marginTop: '10',
   },
 };
