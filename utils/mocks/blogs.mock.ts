@@ -1,4 +1,10 @@
-import { Link, Minus, Paintbrush, TextIcon } from 'lucide-react';
+import {
+  CircleUserRound,
+  Link,
+  Minus,
+  Paintbrush,
+  TextIcon,
+} from 'lucide-react';
 import { v4 } from 'uuid';
 
 import { IBlog } from '../interfaces/blog.interface';
@@ -6,6 +12,7 @@ import { IDefaultSetting } from '../types/blog.type';
 
 export const availableBlogs: IBlog[] = [
   { icon: Paintbrush, title: 'sidebar.background', type: 'Background' },
+  { icon: CircleUserRound, title: 'sidebar.profile', type: 'Profile' },
   { icon: TextIcon, title: 'sidebar.text', type: 'Text' },
   { icon: Link, title: 'sidebar.link', type: 'Button' },
   { icon: Minus, title: 'sidebar.seperator', type: 'Seperator' },
@@ -48,5 +55,15 @@ export const defaultSettings: IDefaultSetting = {
     width: '100',
     marginBottom: '10',
     marginTop: '10',
+  },
+  Profile: {
+    color: '#000000',
+    id: v4(),
+    type: 'Profile',
+    backgroundColor: '#000000',
+    fontSize: '16',
+    marginBottom: '5',
+    marginTop: '5',
+    text: 'User',
   },
 };

@@ -19,11 +19,11 @@ export const SeperatorSetting = () => {
   return (
     <div>
       <div className="py-2 border-b p-3">
-        <h3 className="text-center">{t('settings.text.edit_text')}</h3>
+        <h3 className="text-center">{t('settings.seperator.edit_seperator')}</h3>
       </div>
       <div className="px-4 flex flex-col space-y-3">
         <div>
-          <h3 className="">{t('settings.text.edit_text_color')}</h3>
+          <h3 className="">{t('settings.seperator.edit_seperator_color')}</h3>
           <ColorPicker
             color={bgColor}
             onChange={(color) => setBgColor(color.hex)}
@@ -45,16 +45,16 @@ export const SeperatorSetting = () => {
           onChange={setMarginTop}
           title={t('settings.properties.margin_top')}
           value={marginTop}
-          max={100}
-          min={10}
+          max={64}
+          min={5}
           type="number"
         />
         <CurstomPropertyInput
           onChange={setMarginBottom}
           title={t('settings.properties.margin_bottom')}
           value={marginBottom}
-          max={100}
-          min={10}
+          max={64}
+          min={5}
           type="number"
         />
       </div>

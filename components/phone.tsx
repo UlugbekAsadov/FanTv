@@ -11,6 +11,7 @@ import { usePhoneContext } from '@/context/phone.context';
 import { IAddedBlog } from '@/utils/interfaces/blog.interface';
 
 import { LinkBlog } from './template/blogs/link.blog';
+import { ProfileBlog } from './template/blogs/profile.blog';
 import { SeperatorBlog } from './template/blogs/seperator.blog';
 import { TextBlog } from './template/blogs/text.blog';
 
@@ -37,6 +38,9 @@ export const Phone = () => {
 
       case 'Seperator':
         return <SeperatorBlog key={addedBlog.id} addedBlog={addedBlog} />;
+
+      case 'Profile':
+        return <ProfileBlog key={addedBlog.id} addedBlog={addedBlog} />;
     }
   };
 

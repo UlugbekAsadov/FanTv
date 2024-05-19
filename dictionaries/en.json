@@ -5,7 +5,8 @@
     "background": "Background",
     "text": "Text",
     "link": "Link",
-    "seperator": "Seperator"
+    "seperator": "Seperator",
+    "profile": "Profile"
   },
   "settings": {
     "background": {
@@ -26,6 +27,16 @@
       "edit_text": "Edit text",
       "edit_text_value": "Edit text text",
       "edit_text_color": "Edit text color"
+    },
+    "seperator": {
+      "edit_seperator": "Edit seperator",
+      "edit_seperator_color": "Edit seperator color"
+    },
+    "profile": {
+      "edit_profile": "Edit profile",
+      "upload_image": "Upload a suitable avatar, clicking on plus",
+      "edit_username": "Edit username",
+      "edit_username_color": "Edit username colour"
     },
     "properties": {
       "font_size": "Font size",

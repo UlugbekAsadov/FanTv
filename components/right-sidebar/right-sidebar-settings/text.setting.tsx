@@ -1,4 +1,5 @@
 import { ColorPicker } from '@/components/color-picker';
+import { CurstomPropertyInput } from '@/components/custom-property-input';
 import { CustomSelect } from '@/components/custom-select';
 import { PositionSelectSetting } from '@/components/position-select-setting';
 import { Textarea } from '@/components/ui/textarea';
@@ -13,6 +14,8 @@ export const TextSetting = () => {
   const [color, setColor] = useBlogValues('color');
   const [fontSize, setFontSize] = useBlogValues('fontSize');
   const [position, setPosition] = useBlogValues<Positions>('position');
+  const [marginTop, setMarginTop] = useBlogValues('marginTop');
+  const [marginBottom, setMarginBottom] = useBlogValues('marginBottom');
 
   return (
     <div>
@@ -41,6 +44,20 @@ export const TextSetting = () => {
           title={t('settings.properties.text_align')}
           value={position}
           onChange={setPosition}
+        />
+        <CurstomPropertyInput
+          title={t('settings.properties.margin_top')}
+          onChange={setMarginTop}
+          value={marginTop}
+          max={64}
+          min={5}
+        />
+        <CurstomPropertyInput
+          title={t('settings.properties.margin_bottom')}
+          onChange={setMarginBottom}
+          value={marginBottom}
+          max={64}
+          min={5}
         />
       </div>
     </div>

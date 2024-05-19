@@ -25,4 +25,5 @@ export interface IAddedBlog {
   position?: Positions;
   marginTop?: string;
   marginBottom?: string;
+  src?: string;
 }
