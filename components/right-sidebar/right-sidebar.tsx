@@ -4,6 +4,7 @@ import { usePhoneContext } from '@/context/phone.context';
 import { defaultOption } from '@/lib/utils';
 
 import { BackgroundSetting } from './right-sidebar-settings/background-setting/background.setting';
+import { DonationSetting } from './right-sidebar-settings/donation-setting/donation.setting';
 import { LinkSetting } from './right-sidebar-settings/link.setting';
 import { ProfileSettings } from './right-sidebar-settings/profile.setting';
 import { SeperatorSetting } from './right-sidebar-settings/seperator.setting';
@@ -18,29 +19,19 @@ export const RightSidebar = () => {
         return <BackgroundSetting />;
 
       case 'Button':
-        if (editingId) {
-          return <LinkSetting />;
-        }
-        return null;
+        return <LinkSetting />;
 
       case 'Text':
-        if (editingId) {
-          return <TextSetting />;
-        }
-        return null;
+        return <TextSetting />;
 
       case 'Seperator':
-        if (editingId) {
-          return <SeperatorSetting />;
-        }
-        return null;
+        return <SeperatorSetting />;
 
       case 'Profile':
-        if (editingId) {
-          return <ProfileSettings />;
-        }
+        return <ProfileSettings />;
 
-        return null;
+      case 'Donate':
+        return <DonationSetting />;
 
       default:
         return defaultOption(selectedBlog.type);
@@ -48,8 +39,8 @@ export const RightSidebar = () => {
   };
 
   return (
-    <aside className="max-w-[300px] w-full border-l">
-      {getCurrentSetting()}
+    <aside className="max-w-[300px] w-full border-l sticky top-0">
+      {editingId ? getCurrentSetting() : null}
     </aside>
   );
 };

@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useParams } from 'next/navigation';
 import React, {
   createContext,
-  ReactNode,
   useContext,
   useEffect,
   useState,
@@ -19,7 +19,7 @@ interface IContext {
           [key: string]: string | number;
         }
       | undefined
-  ) => ReactNode;
+  ) => any;
   lang: string | string[];
 }
 

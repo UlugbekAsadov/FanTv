@@ -1,5 +1,6 @@
 import {
   CircleUserRound,
+  DollarSignIcon,
   Link,
   Minus,
   Paintbrush,
@@ -16,6 +17,7 @@ export const availableBlogs: IBlog[] = [
   { icon: TextIcon, title: 'sidebar.text', type: 'Text' },
   { icon: Link, title: 'sidebar.link', type: 'Button' },
   { icon: Minus, title: 'sidebar.seperator', type: 'Seperator' },
+  { icon: DollarSignIcon, title: 'sidebar.donation', type: 'Donate' },
 ];
 
 export const defaultSettings: IDefaultSetting = {
@@ -65,5 +67,13 @@ export const defaultSettings: IDefaultSetting = {
     marginBottom: '5',
     marginTop: '5',
     text: 'User',
+  },
+  Donate: {
+    color: '#000000',
+    id: v4(),
+    type: 'Donate',
+    fontSize: '16',
+    borderRadius: '8',
+    backgroundColor: "#000000"
   },
 };

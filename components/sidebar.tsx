@@ -28,7 +28,7 @@ export const Sidebar = () => {
   });
 
   return (
-    <aside className="max-w-[300px] w-full border-r">
+    <aside className="max-w-[300px] w-full border-r sticky top-0">
       <div className="py-2 border-b">
         <h3 className="text-center">{t('sidebar.add_new_block')}</h3>
       </div>

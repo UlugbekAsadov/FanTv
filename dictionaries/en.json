@@ -6,7 +6,8 @@
     "text": "Text",
     "link": "Link",
     "seperator": "Seperator",
-    "profile": "Profile"
+    "profile": "Profile",
+    "donation": "Donation"
   },
   "settings": {
     "background": {
@@ -48,7 +49,20 @@
       "text_align": "Text align",
       "content_position": "Content position",
       "margin_top": "Margin top (px)",
-      "margin_bottom": "Margin bottom (px)"
+      "margin_bottom": "Margin bottom (px)",
+      "text_color": "Text Color",
+      "button_background": "Button background"
+    }
+  },
+  "blocks": {
+    "donation": {
+      "your_name_and_amount": "Введите ваше имя и сумму доната",
+      "your_name": "Ваше имя",
+      "send_anonymous": "Отправить анонимно",
+      "donate": "Донат",
+      "enter_your_message": "Введите сообщение к донату",
+      "min": "Минимум",
+      "offers": "Нажимая 'Донат', Вы подтверждаете, что отправляемые средства являются донатом, а также соглашаетесь с условиями публичной оферты"
     }
   }
 }
