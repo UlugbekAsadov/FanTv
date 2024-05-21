@@ -13,16 +13,19 @@
     "background": {
       "edit_background": "Edit background",
       "solid": "Solid",
-      "gradient": "Gradiend",
+      "gradient": "Gradient",
       "first_color": "First Colour",
-      "second_color": "Second Colour"
+      "second_color": "Second Colour",
+      "image": "Image"
     },
     "link": {
       "edit_link": "Edit link",
       "edit_link_text": "Edit link text",
       "edit_link_color": "Edit text color",
       "edit_link_bg_color": "Edit link background color",
-      "edit_link_href": "Edit link url"
+      "edit_link_href": "Edit link url",
+      "color": "Color",
+      "image": "Image"
     },
     "text": {
       "edit_text": "Edit text",

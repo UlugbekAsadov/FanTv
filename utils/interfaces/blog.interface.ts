@@ -26,4 +26,5 @@ export interface IAddedBlog {
   marginTop?: string;
   marginBottom?: string;
   src?: string;
+  backgroundImage?: string;
 }

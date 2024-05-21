@@ -23,7 +23,8 @@ export const LinkBlog = ({ addedBlog }: IProps) => {
     position,
     blogPosition,
     marginBottom,
-    marginTop
+    marginTop,
+    backgroundImage,
   } = addedBlog;
   const { handleClickBlogOnScreen, editingId } = usePhoneContext();
 
@@ -39,7 +40,9 @@ export const LinkBlog = ({ addedBlog }: IProps) => {
         <div
           onClick={handleClickBlogOnScreen.bind(null, type, id)}
           style={{
-            background: backgroundColor,
+            backgroundColor: backgroundColor,
+            backgroundImage: `url("${backgroundImage}")`,
+            backgroundPosition: 'center center',
             color,
             width: `${width}%`,
             textAlign: position,

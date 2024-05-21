@@ -19,19 +19,34 @@ export const RightSidebar = () => {
         return <BackgroundSetting />;
 
       case 'Button':
-        return <LinkSetting />;
+        if (editingId) {
+          return <LinkSetting />;
+        }
+        return null;
 
       case 'Text':
-        return <TextSetting />;
+        if (editingId) {
+          return <TextSetting />;
+        }
+        return null;
 
       case 'Seperator':
-        return <SeperatorSetting />;
+        if (editingId) {
+          return <SeperatorSetting />;
+        }
+        return null;
 
       case 'Profile':
-        return <ProfileSettings />;
+        if (editingId) {
+          return <ProfileSettings />;
+        }
+        return null;
 
       case 'Donate':
-        return <DonationSetting />;
+        if (editingId) {
+          return <DonationSetting />;
+        }
+        return null;
 
       default:
         return defaultOption(selectedBlog.type);
@@ -40,7 +55,7 @@ export const RightSidebar = () => {
 
   return (
     <aside className="max-w-[300px] w-full border-l sticky top-0">
-      {editingId ? getCurrentSetting() : null}
+      {getCurrentSetting()}
     </aside>
   );
 };

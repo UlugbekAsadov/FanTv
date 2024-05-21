@@ -83,9 +83,10 @@ export const PhoneContextProvider = ({ children }: IProps) => {
   };
 
   const handleRemoveBlog = (id: string) => {
-    const filteredBlogd = template.blogs.filter((blog) => blog.id !== id);
+    const filteredBlog = template.blogs.filter((blog) => blog.id !== id);
     setEditingId(null);
-    setTemplate((prevState) => ({ ...prevState, blogs: filteredBlogd }));
+    setSelectedBlog(availableBlogs[0]);
+    setTemplate((prevState) => ({ ...prevState, blogs: filteredBlog }));
   };
 
   console.log({ template });

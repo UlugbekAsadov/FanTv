@@ -1,7 +1,9 @@
 import { ColorPicker } from '@/components/color-picker';
 import { CustomSelect } from '@/components/custom-select';
+import { MediaUplaoder } from '@/components/media-uploader';
 import { PositionSelectSetting } from '@/components/position-select-setting';
 import { Input } from '@/components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useLocaleContext } from '@/context/locale.context';
 import { useBlogValues } from '@/hooks/useBlogValues';
 import {
@@ -23,6 +25,7 @@ export const LinkSetting = () => {
   const [position, setPosition] = useBlogValues<Positions>('position');
   const [blogPosition, setBlogPosition] =
     useBlogValues<Positions>('blogPosition');
+  const [bgImage, setBgImage] = useBlogValues('backgroundImage');
 
   return (
     <div>
@@ -46,20 +49,30 @@ export const LinkSetting = () => {
             onChange={(e) => setHref(e.target.value)}
           />
         </div>
-        <div>
-          <h3 className="">{t('settings.link.edit_link_bg_color')}</h3>
-          <ColorPicker
-            color={bgColor}
-            onChange={(color) => setBgColor(color.hex)}
-          />
-        </div>
-        <div>
-          <h3 className="">{t('settings.link.edit_link_color')}</h3>
-          <ColorPicker
-            color={color}
-            onChange={(color) => setColor(color.hex)}
-          />
-        </div>
+
+        <Tabs defaultValue={bgImage ? 'image' : 'color'}>
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="color">{t('settings.link.color')}</TabsTrigger>
+            <TabsTrigger value="image">{t('settings.link.image')}</TabsTrigger>
+          </TabsList>
+          <TabsContent value="color">
+            <ColorPicker
+              title={t('settings.link.edit_link_bg_color')}
+              color={bgColor}
+              onChange={(color) => setBgColor(color.hex)}
+            />
+          </TabsContent>
+          <TabsContent value="image">
+            <MediaUplaoder value={bgImage} onChange={setBgImage} />
+          </TabsContent>
+        </Tabs>
+
+        <ColorPicker
+          title={t('settings.link.edit_link_color')}
+          color={color}
+          onChange={(color) => setColor(color.hex)}
+        />
+
         <CustomSelect
           title={t('settings.properties.border_radius')}
           value={borderRadius}
