@@ -15,49 +15,41 @@ export const ProfileSettings = () => {
   const [fontSize, setFontSize] = useBlogValues('fontSize');
 
   return (
-    <div>
-      <div className="py-2 border-b p-3">
-        <h3 className="text-center">{t('settings.profile.edit_profile')}</h3>
+    <div className="flex flex-col space-y-3">
+      <MediaUplaoder onChange={setImage} value={image} />
+      <div className="mt-3">
+        <h3>{t('settings.profile.edit_username')}</h3>
+        <Input value={userName} onChange={(e) => setUserName(e.target.value)} />
       </div>
-
-      <div className="px-4 flex flex-col space-y-3">
-        <MediaUplaoder onChange={setImage} value={image} />
-        <div className="mt-3">
-          <h3>{t('settings.profile.edit_username')}</h3>
-          <Input
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </div>
-        <div className="">
-          <h3>{t('settings.profile.edit_username_color')}</h3>
-          <ColorPicker color={color} onChange={(e) => setColor(e.hex)} />
-        </div>
-        <CurstomPropertyInput
-          onChange={setMarginTop}
-          title={t('settings.properties.margin_top')}
-          value={marginTop}
-          max={64}
-          min={5}
-          type="number"
-        />
-        <CurstomPropertyInput
-          onChange={setMarginBottom}
-          title={t('settings.properties.margin_bottom')}
-          value={marginBottom}
-          max={64}
-          min={5}
-          type="number"
-        />
-        <CurstomPropertyInput
-          onChange={setFontSize}
-          title={t('settings.properties.font_size')}
-          value={fontSize}
-          max={42}
-          min={14}
-          type="number"
-        />
-      </div>
+      <ColorPicker
+        title={t('settings.profile.edit_username_color')}
+        color={color}
+        onChange={(e) => setColor(e.hex)}
+      />
+      <CurstomPropertyInput
+        onChange={setMarginTop}
+        title={t('settings.properties.margin_top')}
+        value={marginTop}
+        max={64}
+        min={5}
+        type="number"
+      />
+      <CurstomPropertyInput
+        onChange={setMarginBottom}
+        title={t('settings.properties.margin_bottom')}
+        value={marginBottom}
+        max={64}
+        min={5}
+        type="number"
+      />
+      <CurstomPropertyInput
+        onChange={setFontSize}
+        title={t('settings.properties.font_size')}
+        value={fontSize}
+        max={42}
+        min={14}
+        type="number"
+      />
     </div>
   );
 };

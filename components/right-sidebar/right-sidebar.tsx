@@ -1,13 +1,14 @@
 'use client';
 
+import { SeparatorSetting } from '@/components/right-sidebar/right-sidebar-settings/seperator.setting';
+import { TemplatesSettings } from '@/components/right-sidebar/right-sidebar-settings/templates.settings';
 import { usePhoneContext } from '@/context/phone.context';
 import { defaultOption } from '@/lib/utils';
 
 import { BackgroundSetting } from './right-sidebar-settings/background-setting/background.setting';
-import { DonationSetting } from './right-sidebar-settings/donation-setting/donation.setting';
+import { DonationSetting } from './right-sidebar-settings/donation.setting';
 import { LinkSetting } from './right-sidebar-settings/link.setting';
 import { ProfileSettings } from './right-sidebar-settings/profile.setting';
-import { SeperatorSetting } from './right-sidebar-settings/seperator.setting';
 import { TextSetting } from './right-sidebar-settings/text.setting';
 
 export const RightSidebar = () => {
@@ -30,9 +31,9 @@ export const RightSidebar = () => {
         }
         return null;
 
-      case 'Seperator':
+      case 'Separator':
         if (editingId) {
-          return <SeperatorSetting />;
+          return <SeparatorSetting />;
         }
         return null;
 
@@ -48,13 +49,16 @@ export const RightSidebar = () => {
         }
         return null;
 
+      case 'Templates':
+        return <TemplatesSettings />;
+
       default:
         return defaultOption(selectedBlog.type);
     }
   };
 
   return (
-    <aside className="max-w-[300px] w-full border-l sticky top-0">
+    <aside className="max-w-[300px] w-full border-l sticky top-0 p-4">
       {getCurrentSetting()}
     </aside>
   );

@@ -14,7 +14,11 @@ import { v4 } from 'uuid';
 import { IAddedBlog, IBlog } from '@/utils/interfaces/blog.interface';
 import { IPhoneSize } from '@/utils/interfaces/phone-size.interface';
 import { ITemplate } from '@/utils/interfaces/template.interface';
-import { availableBlogs, defaultSettings } from '@/utils/mocks/blogs.mock';
+import {
+  availableBlogs,
+  defaultSettings,
+  unEditableBlogs,
+} from '@/utils/mocks/blogs.mock';
 import { phoneSizes } from '@/utils/mocks/phone-sizes.mock';
 import { templateMock } from '@/utils/mocks/template.mock';
 import { Blog, EditableBlog } from '@/utils/types/blog.type';
@@ -55,10 +59,14 @@ export const PhoneContextProvider = ({ children }: IProps) => {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   const handleAddBlog = (blog: IBlog) => {
-    const blogId = v4();
     setSelectedBlog(blog);
+    const isUnEditableBlog = unEditableBlogs.some(
+      (unEditableBlog) => unEditableBlog === blog.type
+    );
 
-    if (blog.type === 'Background') return;
+    if (isUnEditableBlog) return;
+
+    const blogId = v4();
     const newBlog: IAddedBlog = defaultSettings[blog.type as EditableBlog];
 
     setTemplate((prevState) => ({

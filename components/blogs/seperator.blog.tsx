@@ -7,7 +7,7 @@ interface IProps {
   addedBlog: IAddedBlog;
 }
 
-export const SeperatorBlog = ({ addedBlog }: IProps) => {
+export const SeparatorBlog = ({ addedBlog }: IProps) => {
   const {
     id,
     width,

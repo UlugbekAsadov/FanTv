@@ -13,35 +13,28 @@ export const BackgroundSetting = () => {
 
   return (
     <div>
-      <div className="py-2 border-b p-3">
-        <h3 className="text-center">
-          {t('settings.background.edit_background')}
-        </h3>
-      </div>
-      <div className="mt-3 px-4">
-        <Tabs defaultValue={isBgGradient ? 'gradient' : 'solid'}>
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="solid">
-              {t('settings.background.solid')}
-            </TabsTrigger>
-            <TabsTrigger value="gradient">
-              {t('settings.background.gradient')}
-            </TabsTrigger>{' '}
-            <TabsTrigger value="image">
-              {t('settings.background.image')}
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="solid">
-            <SolidColor />
-          </TabsContent>
-          <TabsContent value="gradient">
-            <GradientColor />
-          </TabsContent>
-          <TabsContent value="image">
-            <BackgroundImage />
-          </TabsContent>
-        </Tabs>
-      </div>
+      <Tabs defaultValue={isBgGradient ? 'gradient' : 'solid'}>
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="solid">
+            {t('settings.background.solid')}
+          </TabsTrigger>
+          <TabsTrigger value="gradient">
+            {t('settings.background.gradient')}
+          </TabsTrigger>{' '}
+          <TabsTrigger value="image">
+            {t('settings.background.image')}
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="solid">
+          <SolidColor />
+        </TabsContent>
+        <TabsContent value="gradient">
+          <GradientColor />
+        </TabsContent>
+        <TabsContent value="image">
+          <BackgroundImage />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

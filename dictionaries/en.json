@@ -5,9 +5,10 @@
     "background": "Background",
     "text": "Text",
     "link": "Link",
-    "seperator": "Seperator",
+    "Separator": "Separator",
     "profile": "Profile",
-    "donation": "Donation"
+    "donation": "Donation",
+    "templates": "Templates"
   },
   "settings": {
     "background": {
@@ -32,9 +33,9 @@
       "edit_text_value": "Edit text text",
       "edit_text_color": "Edit text color"
     },
-    "seperator": {
-      "edit_seperator": "Edit seperator",
-      "edit_seperator_color": "Edit seperator color"
+    "Separator": {
+      "edit_Separator": "Edit Separator",
+      "edit_Separator_color": "Edit Separator color"
     },
     "profile": {
       "edit_profile": "Edit profile",

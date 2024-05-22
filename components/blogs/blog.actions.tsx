@@ -3,11 +3,15 @@ import { TrashIcon } from 'lucide-react';
 import { usePhoneContext } from '@/context/phone.context';
 
 interface IProps {
-  blogId: string;
+  blogId: string | null;
 }
 
 export const BlogActions = ({ blogId }: IProps) => {
   const { handleRemoveBlog } = usePhoneContext();
+
+  if (!blogId) {
+    return null;
+  }
 
   return (
     <div

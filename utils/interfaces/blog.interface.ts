@@ -1,6 +1,6 @@
 import { LucideProps } from 'lucide-react';
 
-import { Blog, BlogPositions } from '../types/blog.type';
+import { Blog, BlogPositions, EditableBlog } from '../types/blog.type';
 import { Positions } from '../types/properties.type';
 
 export interface IBlog {
@@ -13,7 +13,7 @@ export interface IBlog {
 
 export interface IAddedBlog {
   id: string;
-  type: Blog;
+  type: EditableBlog;
   color: string;
   backgroundColor?: string;
   text?: string;
@@ -27,4 +27,9 @@ export interface IAddedBlog {
   marginBottom?: string;
   src?: string;
   backgroundImage?: string;
+}
+
+export interface IPos {
+  x: number;
+  y: number;
 }

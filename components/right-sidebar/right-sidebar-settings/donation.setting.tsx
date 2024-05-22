@@ -9,7 +9,7 @@ export const DonationSetting = () => {
     useBlogValues('backgroundColor');
 
   return (
-    <div className="px-4 flex flex-col space-y-3">
+    <div className="flex flex-col space-y-3">
       <ColorPicker
         title={t('settings.properties.text_color')}
         color={textColor}

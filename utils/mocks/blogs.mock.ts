@@ -4,19 +4,21 @@ import {
   Link,
   Minus,
   Paintbrush,
+  PaletteIcon,
   TextIcon,
 } from 'lucide-react';
 import { v4 } from 'uuid';
 
 import { IBlog } from '../interfaces/blog.interface';
-import { IDefaultSetting } from '../types/blog.type';
+import { IDefaultSetting, UnEditableBlog } from '../types/blog.type';
 
 export const availableBlogs: IBlog[] = [
+  { icon: PaletteIcon, title: 'sidebar.templates', type: 'Templates' },
   { icon: Paintbrush, title: 'sidebar.background', type: 'Background' },
   { icon: CircleUserRound, title: 'sidebar.profile', type: 'Profile' },
   { icon: TextIcon, title: 'sidebar.text', type: 'Text' },
   { icon: Link, title: 'sidebar.link', type: 'Button' },
-  { icon: Minus, title: 'sidebar.seperator', type: 'Seperator' },
+  { icon: Minus, title: 'sidebar.Separator', type: 'Separator' },
   { icon: DollarSignIcon, title: 'sidebar.donation', type: 'Donate' },
 ];
 
@@ -48,10 +50,10 @@ export const defaultSettings: IDefaultSetting = {
     marginTop: '5',
     marginBottom: '5',
   },
-  Seperator: {
+  Separator: {
     id: v4(),
     color: '#000000',
-    type: 'Seperator',
+    type: 'Separator',
     backgroundColor: '#000000',
     blogPosition: 'center',
     width: '100',
@@ -74,6 +76,8 @@ export const defaultSettings: IDefaultSetting = {
     type: 'Donate',
     fontSize: '16',
     borderRadius: '8',
-    backgroundColor: "#000000"
+    backgroundColor: '#000000',
   },
 };
+
+export const unEditableBlogs: UnEditableBlog[] = ['Background', 'Templates'];

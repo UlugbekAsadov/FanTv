@@ -5,8 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function defaultOption(value: never): never {
-  if (value) throw Error('You missed one of the case on switch');
-
   throw Error('You missed one of the case on switch');
 }
