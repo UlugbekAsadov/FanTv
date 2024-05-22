@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useRef } from 'react';
 
 import { usePhoneContext } from '@/context/phone.context';
 import { IAddedBlog } from '@/utils/interfaces/blog.interface';
