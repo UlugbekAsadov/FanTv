@@ -9,10 +9,10 @@ import {
 } from 'lucide-react';
 import { v4 } from 'uuid';
 
-import { IBlog } from '../interfaces/blog.interface';
-import { IDefaultSetting, UnEditableBlog } from '../types/blog.type';
+import { IBlock } from '../interfaces/block.interface';
+import { IDefaultSetting, UnEditableBlock } from '../types/block.type';
 
-export const availableBlogs: IBlog[] = [
+export const availableBlocks: IBlock[] = [
   { icon: PaletteIcon, title: 'sidebar.templates', type: 'Templates' },
   { icon: Paintbrush, title: 'sidebar.background', type: 'Background' },
   { icon: CircleUserRound, title: 'sidebar.profile', type: 'Profile' },
@@ -33,7 +33,7 @@ export const defaultSettings: IDefaultSetting = {
     fontSize: '16',
     borderRadius: '8',
     width: '100',
-    blogPosition: 'center',
+    blockPosition: 'center',
     position: 'center',
     marginTop: '5',
     marginBottom: '5',
@@ -55,7 +55,7 @@ export const defaultSettings: IDefaultSetting = {
     color: '#000000',
     type: 'Separator',
     backgroundColor: '#000000',
-    blogPosition: 'center',
+    blockPosition: 'center',
     width: '100',
     marginBottom: '10',
     marginTop: '10',
@@ -80,4 +80,4 @@ export const defaultSettings: IDefaultSetting = {
   },
 };
 
-export const unEditableBlogs: UnEditableBlog[] = ['Background', 'Templates'];
+export const unEditableBlocks: UnEditableBlock[] = ['Background', 'Templates'];

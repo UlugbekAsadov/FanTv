@@ -1,12 +1,12 @@
 import { ColorPicker } from '@/components/color-picker';
 import { useLocaleContext } from '@/context/locale.context';
-import { useBlogValues } from '@/hooks/useBlogValues';
+import { useBlockValues } from '@/hooks/useBlockValues';
 
 export const DonationSetting = () => {
   const { t } = useLocaleContext();
-  const [textColor, setTextColor] = useBlogValues('color');
+  const [textColor, setTextColor] = useBlockValues('color');
   const [backgroundColor, setBackgroundColor] =
-    useBlogValues('backgroundColor');
+    useBlockValues('backgroundColor');
 
   return (
     <div className="flex flex-col space-y-3">

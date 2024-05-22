@@ -5,7 +5,7 @@ import { PositionSelectSetting } from '@/components/position-select-setting';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useLocaleContext } from '@/context/locale.context';
-import { useBlogValues } from '@/hooks/useBlogValues';
+import { useBlockValues } from '@/hooks/useBlockValues';
 import {
   defaultBorderRadius,
   defaultFontSizes,
@@ -15,17 +15,17 @@ import { Positions } from '@/utils/types/properties.type';
 
 export const LinkSetting = () => {
   const { t } = useLocaleContext();
-  const [text, setText] = useBlogValues('text');
-  const [bgColor, setBgColor] = useBlogValues('backgroundColor');
-  const [color, setColor] = useBlogValues('color');
-  const [href, setHref] = useBlogValues('link');
-  const [borderRadius, setBorderRadius] = useBlogValues('borderRadius');
-  const [fontSize, setFontSize] = useBlogValues('fontSize');
-  const [width, setWidth] = useBlogValues('width');
-  const [position, setPosition] = useBlogValues<Positions>('position');
-  const [blogPosition, setBlogPosition] =
-    useBlogValues<Positions>('blogPosition');
-  const [bgImage, setBgImage] = useBlogValues('backgroundImage');
+  const [text, setText] = useBlockValues('text');
+  const [bgColor, setBgColor] = useBlockValues('backgroundColor');
+  const [color, setColor] = useBlockValues('color');
+  const [href, setHref] = useBlockValues('link');
+  const [borderRadius, setBorderRadius] = useBlockValues('borderRadius');
+  const [fontSize, setFontSize] = useBlockValues('fontSize');
+  const [width, setWidth] = useBlockValues('width');
+  const [position, setPosition] = useBlockValues<Positions>('position');
+  const [blockPosition, setBlockPosition] =
+    useBlockValues<Positions>('blockPosition');
+  const [bgImage, setBgImage] = useBlockValues('backgroundImage');
 
   return (
     <div className="flex flex-col space-y-3">
@@ -96,8 +96,8 @@ export const LinkSetting = () => {
       />
       <PositionSelectSetting
         title={t('settings.properties.content_position')}
-        value={blogPosition}
-        onChange={setBlogPosition}
+        value={blockPosition}
+        onChange={setBlockPosition}
       />
     </div>
   );

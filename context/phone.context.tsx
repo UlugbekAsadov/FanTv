@@ -11,28 +11,28 @@ import {
 } from 'react';
 import { v4 } from 'uuid';
 
-import { IAddedBlog, IBlog } from '@/utils/interfaces/blog.interface';
+import { IAddedBlock, IBlock } from '@/utils/interfaces/block.interface';
 import { IPhoneSize } from '@/utils/interfaces/phone-size.interface';
 import { ITemplate } from '@/utils/interfaces/template.interface';
 import {
-  availableBlogs,
+  availableBlocks,
   defaultSettings,
-  unEditableBlogs,
-} from '@/utils/mocks/blogs.mock';
+  unEditableBlocks,
+} from '@/utils/mocks/blocks.mock';
 import { phoneSizes } from '@/utils/mocks/phone-sizes.mock';
 import { templateMock } from '@/utils/mocks/template.mock';
-import { Blog, EditableBlog } from '@/utils/types/blog.type';
+import { Block, EditableBlock } from '@/utils/types/block.type';
 
 interface IPhoneContext {
   currentScreenSize: IPhoneSize;
-  selectedBlog: IBlog;
-  handleAddBlog: (blog: IBlog) => void;
+  selectedBlock: IBlock;
+  handleAddBlock: (block: IBlock) => void;
   setCurrentScreenSize: Dispatch<SetStateAction<IPhoneSize>>;
   template: ITemplate;
   handleChangeBackgroundColor: (color: string) => void;
-  handleClickBlogOnScreen: (blogType: Blog, blogId: string) => void;
-  handleRemoveBlog: (blogId: string) => void;
-  editingId: string | null;
+  handleClickBlockOnScreen: (blockType: Block, blockId: string) => void;
+  handleRemoveBlock: (blockId: string) => void;
+  editingBlockId: string | null;
   setTemplate: Dispatch<SetStateAction<ITemplate>>;
 }
 
@@ -54,65 +54,67 @@ export const PhoneContextProvider = ({ children }: IProps) => {
   const [currentScreenSize, setCurrentScreenSize] = useState<IPhoneSize>(
     phoneSizes[0]
   );
-  const [selectedBlog, setSelectedBlog] = useState<IBlog>(availableBlogs[0]);
+  const [selectedBlock, setSelectedBlock] = useState<IBlock>(
+    availableBlocks[0]
+  );
   const [template, setTemplate] = useState<ITemplate>(templateMock);
-  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingBlockId, setEditingBlockId] = useState<string | null>(null);
 
-  const handleAddBlog = (blog: IBlog) => {
-    setSelectedBlog(blog);
-    const isUnEditableBlog = unEditableBlogs.some(
-      (unEditableBlog) => unEditableBlog === blog.type
+  const handleAddBlock = (block: IBlock) => {
+    setSelectedBlock(block);
+    const isUnEditableBlock = unEditableBlocks.some(
+      (unEditableBlock) => unEditableBlock === block.type
     );
 
-    if (isUnEditableBlog) return;
+    if (isUnEditableBlock) return;
 
-    const blogId = v4();
-    const newBlog: IAddedBlog = defaultSettings[blog.type as EditableBlog];
+    const blockId = v4();
+    const newBlock: IAddedBlock = defaultSettings[block.type as EditableBlock];
 
     setTemplate((prevState) => ({
       ...prevState,
-      blogs: [...prevState.blogs, { ...newBlog, id: blogId }],
+      blocks: [...prevState.blocks, { ...newBlock, id: blockId }],
     }));
-    setEditingId(blogId);
+    setEditingBlockId(blockId);
   };
 
   const handleChangeBackgroundColor = (color: string) => {
     setTemplate((prevState) => ({ ...prevState, background: color }));
   };
 
-  const handleClickBlogOnScreen = (blogType: Blog, blogId: string) => {
-    const clickedBlog = availableBlogs.find((blog) => blog.type === blogType);
-    setEditingId(blogId);
-    if (!clickedBlog) {
-      throw Error('Clicked blog is not found on available blogs list');
+  const handleClickBlockOnScreen = (blockType: Block, blockId: string) => {
+    const clickedBlock = availableBlocks.find(
+      (block) => block.type === blockType
+    );
+    setEditingBlockId(blockId);
+    if (!clickedBlock) {
+      throw Error('Clicked block is not found on available blocks list');
     }
 
-    setSelectedBlog(clickedBlog);
+    setSelectedBlock(clickedBlock);
   };
 
-  const handleRemoveBlog = (id: string) => {
-    const filteredBlog = template.blogs.filter((blog) => blog.id !== id);
-    setEditingId(null);
-    setSelectedBlog(availableBlogs[0]);
-    setTemplate((prevState) => ({ ...prevState, blogs: filteredBlog }));
+  const handleRemoveBlock = (id: string) => {
+    const filteredBlock = template.blocks.filter((block) => block.id !== id);
+    setEditingBlockId(null);
+    setSelectedBlock(availableBlocks[0]);
+    setTemplate((prevState) => ({ ...prevState, blocks: filteredBlock }));
   };
-
-  console.log({ template });
 
   const value: IPhoneContext = useMemo(
     () => ({
       currentScreenSize,
-      selectedBlog,
-      handleAddBlog,
+      selectedBlock,
+      handleAddBlock,
       setCurrentScreenSize,
       template,
       handleChangeBackgroundColor,
-      handleClickBlogOnScreen,
-      handleRemoveBlog,
-      editingId,
+      handleClickBlockOnScreen,
+      handleRemoveBlock,
+      editingBlockId,
       setTemplate,
     }),
-    [currentScreenSize, selectedBlog, template, editingId]
+    [currentScreenSize, selectedBlock, template, editingBlockId]
   );
 
   return (

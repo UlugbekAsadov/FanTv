@@ -1,6 +1,6 @@
-import { IAddedBlog } from './blog.interface';
+import { IAddedBlock } from './block.interface';
 
 export interface ITemplate {
   background: string;
-  blogs: IAddedBlog[];
+  blocks: IAddedBlock[];
 }

@@ -4,18 +4,18 @@ import { CustomSelect } from '@/components/custom-select';
 import { PositionSelectSetting } from '@/components/position-select-setting';
 import { Textarea } from '@/components/ui/textarea';
 import { useLocaleContext } from '@/context/locale.context';
-import { useBlogValues } from '@/hooks/useBlogValues';
+import { useBlockValues } from '@/hooks/useBlockValues';
 import { defaultFontSizes } from '@/utils/mocks/properties.mock';
 import { Positions } from '@/utils/types/properties.type';
 
 export const TextSetting = () => {
   const { t } = useLocaleContext();
-  const [value, onChange] = useBlogValues('text');
-  const [color, setColor] = useBlogValues('color');
-  const [fontSize, setFontSize] = useBlogValues('fontSize');
-  const [position, setPosition] = useBlogValues<Positions>('position');
-  const [marginTop, setMarginTop] = useBlogValues('marginTop');
-  const [marginBottom, setMarginBottom] = useBlogValues('marginBottom');
+  const [value, onChange] = useBlockValues('text');
+  const [color, setColor] = useBlockValues('color');
+  const [fontSize, setFontSize] = useBlockValues('fontSize');
+  const [position, setPosition] = useBlockValues<Positions>('position');
+  const [marginTop, setMarginTop] = useBlockValues('marginTop');
+  const [marginBottom, setMarginBottom] = useBlockValues('marginBottom');
 
   return (
     <div className="flex flex-col space-y-3">

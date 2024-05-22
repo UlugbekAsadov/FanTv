@@ -1,15 +1,15 @@
 import Link from 'next/link';
 
 import { usePhoneContext } from '@/context/phone.context';
-import { IAddedBlog } from '@/utils/interfaces/blog.interface';
+import { IAddedBlock } from '@/utils/interfaces/block.interface';
 
-import { BlogActions } from './blog.actions';
+import { BlockActions } from './block.actions';
 
 interface IProps {
-  addedBlog: IAddedBlog;
+  addedBlock: IAddedBlock;
 }
 
-export const LinkBlog = ({ addedBlog }: IProps) => {
+export const LinkBlock = ({ addedBlock }: IProps) => {
   const {
     color,
     text,
@@ -21,12 +21,12 @@ export const LinkBlog = ({ addedBlog }: IProps) => {
     fontSize,
     width,
     position,
-    blogPosition,
+    blockPosition,
     marginBottom,
     marginTop,
     backgroundImage,
-  } = addedBlog;
-  const { handleClickBlogOnScreen, editingId } = usePhoneContext();
+  } = addedBlock;
+  const { handleClickBlockOnScreen, editingBlockId } = usePhoneContext();
 
   return (
     <div className="relative">
@@ -34,11 +34,11 @@ export const LinkBlog = ({ addedBlog }: IProps) => {
         className="  min-h-[56px] h-full overflow-hidden w-full flex flex-col"
         href={link || '#'}
         style={{
-          alignItems: blogPosition,
+          alignItems: blockPosition,
         }}
       >
         <div
-          onClick={handleClickBlogOnScreen.bind(null, type, id)}
+          onClick={handleClickBlockOnScreen.bind(null, type, id)}
           style={{
             backgroundColor: backgroundColor,
             backgroundImage: `url("${backgroundImage}")`,
@@ -56,7 +56,7 @@ export const LinkBlog = ({ addedBlog }: IProps) => {
           {text}
         </div>
       </Link>
-      {editingId === id ? <BlogActions blogId={editingId} /> : null}
+      {editingBlockId === id ? <BlockActions blockId={editingBlockId} /> : null}
     </div>
   );
 };

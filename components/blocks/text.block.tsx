@@ -1,19 +1,19 @@
 import { usePhoneContext } from '@/context/phone.context';
-import { IAddedBlog } from '@/utils/interfaces/blog.interface';
+import { IAddedBlock } from '@/utils/interfaces/block.interface';
 
-import { BlogActions } from './blog.actions';
+import { BlockActions } from './block.actions';
 
 interface IProps {
-  addedBlog: IAddedBlog;
+  addedBlock: IAddedBlock;
 }
-export const TextBlog = ({ addedBlog }: IProps) => {
+export const TextBlock = ({ addedBlock }: IProps) => {
   const { color, text, type, id, fontSize, position, marginBottom, marginTop } =
-    addedBlog;
-  const { handleClickBlogOnScreen, editingId } = usePhoneContext();
+    addedBlock;
+  const { handleClickBlockOnScreen, editingBlockId } = usePhoneContext();
   return (
     <div className="relative">
       <p
-        onClick={handleClickBlogOnScreen.bind(null, type, id)}
+        onClick={handleClickBlockOnScreen.bind(null, type, id)}
         style={{
           color: color,
           fontSize: `${fontSize}px`,
@@ -25,7 +25,7 @@ export const TextBlog = ({ addedBlog }: IProps) => {
       >
         {text}
       </p>
-      {editingId === id ? <BlogActions blogId={editingId} /> : null}
+      {editingBlockId === id ? <BlockActions blockId={editingBlockId} /> : null}
     </div>
   );
 };

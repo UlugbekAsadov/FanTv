@@ -1,19 +1,19 @@
 import { LucideProps } from 'lucide-react';
 
-import { Blog, BlogPositions, EditableBlog } from '../types/blog.type';
+import { Block, BlockPositions, EditableBlock } from '../types/block.type';
 import { Positions } from '../types/properties.type';
 
-export interface IBlog {
+export interface IBlock {
   icon: React.ForwardRefExoticComponent<
     Omit<LucideProps, 'ref'> & React.RefAttributes<SVGSVGElement>
   >;
   title: string;
-  type: Blog;
+  type: Block;
 }
 
-export interface IAddedBlog {
+export interface IAddedBlock {
   id: string;
-  type: EditableBlog;
+  type: EditableBlock;
   color: string;
   backgroundColor?: string;
   text?: string;
@@ -21,15 +21,10 @@ export interface IAddedBlog {
   fontSize?: string;
   borderRadius?: string;
   width?: string;
-  blogPosition?: BlogPositions;
+  blockPosition?: BlockPositions;
   position?: Positions;
   marginTop?: string;
   marginBottom?: string;
   src?: string;
   backgroundImage?: string;
-}
-
-export interface IPos {
-  x: number;
-  y: number;
 }

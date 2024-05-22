@@ -1,31 +1,31 @@
 import { usePhoneContext } from '@/context/phone.context';
-import { IAddedBlog } from '@/utils/interfaces/blog.interface';
+import { IAddedBlock } from '@/utils/interfaces/block.interface';
 
-import { BlogActions } from './blog.actions';
+import { BlockActions } from './block.actions';
 
 interface IProps {
-  addedBlog: IAddedBlog;
+  addedBlock: IAddedBlock;
 }
 
-export const SeparatorBlog = ({ addedBlog }: IProps) => {
+export const SeparatorBlock = ({ addedBlock }: IProps) => {
   const {
     id,
     width,
     backgroundColor,
-    blogPosition,
+    blockPosition,
     type,
     marginBottom,
     marginTop,
-  } = addedBlog;
-  const { editingId, handleClickBlogOnScreen } = usePhoneContext();
+  } = addedBlock;
+  const { editingBlockId, handleClickBlockOnScreen } = usePhoneContext();
 
   return (
     <div className="relative ">
       <div
-        onClick={handleClickBlogOnScreen.bind(null, type, id)}
+        onClick={handleClickBlockOnScreen.bind(null, type, id)}
         style={{
           paddingBottom: `${marginBottom}px`,
-          alignItems: blogPosition,
+          alignItems: blockPosition,
           paddingTop: `${marginTop}px`,
         }}
         className="w-full flex flex-col"
@@ -35,7 +35,7 @@ export const SeparatorBlog = ({ addedBlog }: IProps) => {
           className="h-[1px] rounded-full"
         ></div>
       </div>
-      {editingId === id ? <BlogActions blogId={editingId} /> : null}
+      {editingBlockId === id ? <BlockActions blockId={editingBlockId} /> : null}
     </div>
   );
 };

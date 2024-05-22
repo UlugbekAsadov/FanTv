@@ -12,39 +12,39 @@ import { ProfileSettings } from './right-sidebar-settings/profile.setting';
 import { TextSetting } from './right-sidebar-settings/text.setting';
 
 export const RightSidebar = () => {
-  const { selectedBlog, editingId } = usePhoneContext();
+  const { selectedBlock, editingBlockId } = usePhoneContext();
 
   const getCurrentSetting = () => {
-    switch (selectedBlog.type) {
+    switch (selectedBlock.type) {
       case 'Background':
         return <BackgroundSetting />;
 
       case 'Button':
-        if (editingId) {
+        if (editingBlockId) {
           return <LinkSetting />;
         }
         return null;
 
       case 'Text':
-        if (editingId) {
+        if (editingBlockId) {
           return <TextSetting />;
         }
         return null;
 
       case 'Separator':
-        if (editingId) {
+        if (editingBlockId) {
           return <SeparatorSetting />;
         }
         return null;
 
       case 'Profile':
-        if (editingId) {
+        if (editingBlockId) {
           return <ProfileSettings />;
         }
         return null;
 
       case 'Donate':
-        if (editingId) {
+        if (editingBlockId) {
           return <DonationSetting />;
         }
         return null;
@@ -53,7 +53,7 @@ export const RightSidebar = () => {
         return <TemplatesSettings />;
 
       default:
-        return defaultOption(selectedBlog.type);
+        return defaultOption(selectedBlock.type);
     }
   };
 

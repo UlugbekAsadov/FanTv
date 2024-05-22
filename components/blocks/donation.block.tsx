@@ -9,7 +9,7 @@ import { useLocaleContext } from '@/context/locale.context';
 import { usePhoneContext } from '@/context/phone.context';
 import { cn } from '@/lib/utils';
 import { formatCurrency } from '@/utils/funcs/format-currency';
-import { IAddedBlog } from '@/utils/interfaces/blog.interface';
+import { IAddedBlock } from '@/utils/interfaces/block.interface';
 import { IDonationForm } from '@/utils/interfaces/donation.interface';
 import {
   DEFAULT_DONATION_FORM,
@@ -18,17 +18,17 @@ import {
   recommendedDonations,
 } from '@/utils/mocks/donation.mock';
 
-import { BlogActions } from './blog.actions';
+import { BlockActions } from './block.actions';
 
 interface IProps {
-  addedBlog: IAddedBlog;
+  addedBlock: IAddedBlock;
 }
 
-export const DonationBlock = ({ addedBlog }: IProps) => {
+export const DonationBlock = ({ addedBlock }: IProps) => {
   const [form, setForm] = useState<IDonationForm>(DEFAULT_DONATION_FORM);
   const { t } = useLocaleContext();
-  const { handleClickBlogOnScreen, editingId } = usePhoneContext();
-  const { type, id, color, backgroundColor } = addedBlog;
+  const { handleClickBlockOnScreen, editingBlockId } = usePhoneContext();
+  const { type, id, color, backgroundColor } = addedBlock;
 
   const [validationError, setValidationError] = useState({ name: false });
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -118,7 +118,7 @@ export const DonationBlock = ({ addedBlog }: IProps) => {
       <form
         onSubmit={handleSubmitForm}
         className={cn('flex-grow flex flex-col')}
-        onClick={handleClickBlogOnScreen.bind(null, type, id)}
+        onClick={handleClickBlockOnScreen.bind(null, type, id)}
       >
         <div className="flex-grow">
           <h2 className="text-sm text-start mt-5  font-semibold">
@@ -205,7 +205,7 @@ export const DonationBlock = ({ addedBlog }: IProps) => {
           {t('blocks.donation.offers')}
         </p>
       </form>
-      {editingId === id ? <BlogActions blogId={editingId} /> : null}
+      {editingBlockId === id ? <BlockActions blockId={editingBlockId} /> : null}
     </div>
   );
 };

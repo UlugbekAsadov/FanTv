@@ -2,24 +2,23 @@ import { CircleUserIcon } from 'lucide-react';
 import Image from 'next/image';
 
 import { usePhoneContext } from '@/context/phone.context';
-import { IAddedBlog } from '@/utils/interfaces/blog.interface';
+import { IAddedBlock } from '@/utils/interfaces/block.interface';
 
-import { BlogActions } from './blog.actions';
+import { BlockActions } from './block.actions';
 
 interface IProps {
-  addedBlog: IAddedBlog;
+  addedBlock: IAddedBlock;
 }
 
-export const ProfileBlog = ({ addedBlog }: IProps) => {
+export const ProfileBlock = ({ addedBlock }: IProps) => {
   const { id, src, text, color, fontSize, type, marginBottom, marginTop } =
-    addedBlog;
-  const { editingId, handleClickBlogOnScreen } = usePhoneContext();
+    addedBlock;
+  const { editingBlockId, handleClickBlockOnScreen } = usePhoneContext();
 
-  console.log({ src });
   return (
     <div className="relative">
       <div
-        onClick={handleClickBlogOnScreen.bind(null, type, id)}
+        onClick={handleClickBlockOnScreen.bind(null, type, id)}
         className="flex flex-col items-center "
         style={{
           marginTop: `${marginTop}px`,
@@ -45,7 +44,7 @@ export const ProfileBlog = ({ addedBlog }: IProps) => {
           {text}
         </p>
       </div>
-      {editingId === id ? <BlogActions blogId={editingId} /> : null}
+      {editingBlockId === id ? <BlockActions blockId={editingBlockId} /> : null}
     </div>
   );
 };

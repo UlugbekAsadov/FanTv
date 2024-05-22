@@ -3,19 +3,19 @@ import { TrashIcon } from 'lucide-react';
 import { usePhoneContext } from '@/context/phone.context';
 
 interface IProps {
-  blogId: string | null;
+  blockId: string | null;
 }
 
-export const BlogActions = ({ blogId }: IProps) => {
-  const { handleRemoveBlog } = usePhoneContext();
+export const BlockActions = ({ blockId }: IProps) => {
+  const { handleRemoveBlock } = usePhoneContext();
 
-  if (!blogId) {
+  if (!blockId) {
     return null;
   }
 
   return (
     <div
-      onClick={handleRemoveBlog.bind(null, blogId)}
+      onClick={handleRemoveBlock.bind(null, blockId)}
       className="absolute -left-24 top-0 bg-white rounded-full border p-3 group  cursor-pointer"
     >
       <TrashIcon className="text-gray-300 transition group-hover:text-black" />

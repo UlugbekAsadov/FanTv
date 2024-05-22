@@ -3,16 +3,16 @@ import { CurstomPropertyInput } from '@/components/custom-property-input';
 import { MediaUplaoder } from '@/components/media-uploader';
 import { Input } from '@/components/ui/input';
 import { useLocaleContext } from '@/context/locale.context';
-import { useBlogValues } from '@/hooks/useBlogValues';
+import { useBlockValues } from '@/hooks/useBlockValues';
 
 export const ProfileSettings = () => {
   const { t } = useLocaleContext();
-  const [image, setImage] = useBlogValues('src');
-  const [userName, setUserName] = useBlogValues('text');
-  const [color, setColor] = useBlogValues('color');
-  const [marginBottom, setMarginBottom] = useBlogValues('marginBottom');
-  const [marginTop, setMarginTop] = useBlogValues('marginTop');
-  const [fontSize, setFontSize] = useBlogValues('fontSize');
+  const [image, setImage] = useBlockValues('src');
+  const [userName, setUserName] = useBlockValues('text');
+  const [color, setColor] = useBlockValues('color');
+  const [marginBottom, setMarginBottom] = useBlockValues('marginBottom');
+  const [marginTop, setMarginTop] = useBlockValues('marginTop');
+  const [fontSize, setFontSize] = useBlockValues('fontSize');
 
   return (
     <div className="flex flex-col space-y-3">

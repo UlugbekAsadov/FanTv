@@ -7,48 +7,47 @@ import {
   DropResult,
 } from 'react-beautiful-dnd';
 
-import { DonationBlock } from '@/components/blogs/donation.blog';
-import { LinkBlog } from '@/components/blogs/link.blog';
-import { ProfileBlog } from '@/components/blogs/profile.blog';
-import { SeparatorBlog } from '@/components/blogs/seperator.blog';
-import { TextBlog } from '@/components/blogs/text.blog';
+import { DonationBlock } from '@/components/blocks/donation.block';
+import { LinkBlock } from '@/components/blocks/link.block';
+import { ProfileBlock } from '@/components/blocks/profile.block';
+import { SeparatorBlock } from '@/components/blocks/separator.block';
+import { TextBlock } from '@/components/blocks/text.block';
 import { usePhoneContext } from '@/context/phone.context';
 import { defaultOption } from '@/lib/utils';
-import { IAddedBlog } from '@/utils/interfaces/blog.interface';
+import { IAddedBlock } from '@/utils/interfaces/block.interface';
 
 export const Phone = () => {
-  const { currentScreenSize, template, setTemplate } =
-    usePhoneContext();
+  const { currentScreenSize, template, setTemplate } = usePhoneContext();
 
   const onDragEnd = (result: DropResult) => {
     const destinationIndex = result.destination?.index || 0;
     const sourceIndex = result.source.index;
-    const newItems = [...template.blogs];
+    const newItems = [...template.blocks];
 
     const [removed] = newItems.splice(sourceIndex, 1);
     newItems.splice(destinationIndex, 0, removed);
-    setTemplate((prevState) => ({ ...prevState, blogs: newItems }));
+    setTemplate((prevState) => ({ ...prevState, blocks: newItems }));
   };
 
-  const getBlog = (addedBlog: IAddedBlog) => {
-    switch (addedBlog.type) {
+  const getBlock = (addedBlock: IAddedBlock) => {
+    switch (addedBlock.type) {
       case 'Button':
-        return <LinkBlog key={addedBlog.id} addedBlog={addedBlog} />;
+        return <LinkBlock key={addedBlock.id} addedBlock={addedBlock} />;
 
       case 'Text':
-        return <TextBlog key={addedBlog.id} addedBlog={addedBlog} />;
+        return <TextBlock key={addedBlock.id} addedBlock={addedBlock} />;
 
       case 'Separator':
-        return <SeparatorBlog key={addedBlog.id} addedBlog={addedBlog} />;
+        return <SeparatorBlock key={addedBlock.id} addedBlock={addedBlock} />;
 
       case 'Profile':
-        return <ProfileBlog key={addedBlog.id} addedBlog={addedBlog} />;
+        return <ProfileBlock key={addedBlock.id} addedBlock={addedBlock} />;
 
       case 'Donate':
-        return <DonationBlock key={addedBlog.id} addedBlog={addedBlog} />;
+        return <DonationBlock key={addedBlock.id} addedBlock={addedBlock} />;
 
       default:
-        return defaultOption(addedBlog.type);
+        return defaultOption(addedBlock.type);
     }
   };
 
@@ -65,7 +64,7 @@ export const Phone = () => {
         <Droppable droppableId="droppable">
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
-              {template.blogs.map((addedBlog, index) => (
+              {template.blocks.map((addedBlock, index) => (
                 <Draggable
                   draggableId={index.toString()}
                   key={index}
@@ -77,7 +76,7 @@ export const Phone = () => {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      {getBlog(addedBlog)}
+                      {getBlock(addedBlock)}
                     </div>
                   )}
                 </Draggable>

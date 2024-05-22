@@ -3,18 +3,18 @@ import { CurstomPropertyInput } from '@/components/custom-property-input';
 import { CustomSelect } from '@/components/custom-select';
 import { PositionSelectSetting } from '@/components/position-select-setting';
 import { useLocaleContext } from '@/context/locale.context';
-import { useBlogValues } from '@/hooks/useBlogValues';
+import { useBlockValues } from '@/hooks/useBlockValues';
 import { defaultWidth } from '@/utils/mocks/properties.mock';
 import { Positions } from '@/utils/types/properties.type';
 
 export const SeparatorSetting = () => {
   const { t } = useLocaleContext();
-  const [bgColor, setBgColor] = useBlogValues('backgroundColor');
-  const [width, setWidth] = useBlogValues('width');
-  const [blogPosition, setBlogPosition] =
-    useBlogValues<Positions>('blogPosition');
-  const [marginTop, setMarginTop] = useBlogValues('marginTop');
-  const [marginBottom, setMarginBottom] = useBlogValues('marginBottom');
+  const [bgColor, setBgColor] = useBlockValues('backgroundColor');
+  const [width, setWidth] = useBlockValues('width');
+  const [blockPosition, setBlockPosition] =
+    useBlockValues<Positions>('blockPosition');
+  const [marginTop, setMarginTop] = useBlockValues('marginTop');
+  const [marginBottom, setMarginBottom] = useBlockValues('marginBottom');
 
   return (
     <div className="flex flex-col space-y-3">
@@ -32,8 +32,8 @@ export const SeparatorSetting = () => {
       />
       <PositionSelectSetting
         title={t('settings.properties.content_position')}
-        value={blogPosition}
-        onChange={setBlogPosition}
+        value={blockPosition}
+        onChange={setBlockPosition}
       />
       <CurstomPropertyInput
         onChange={setMarginTop}
