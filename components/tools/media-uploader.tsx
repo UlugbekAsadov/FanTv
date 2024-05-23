@@ -8,7 +8,7 @@ interface IProps {
   onChange: (url: string) => void;
 }
 
-export const MediaUplaoder = ({ onChange, value }: IProps) => {
+export const MediaUploader = ({ onChange, value }: IProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { t } = useLocaleContext();
   const handleClickInput = () => {
