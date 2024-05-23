@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useLocaleContext } from '@/context/locale.context';
 import { useBlockValues } from '@/hooks/useBlockValues';
+import { isValidURL } from '@/utils/funcs/is-valid-url';
 import {
   defaultBorderRadius,
   defaultFontSizes,
@@ -15,10 +16,10 @@ import { Positions } from '@/utils/types/properties.type';
 
 export const LinkSetting = () => {
   const { t } = useLocaleContext();
-  const [text, setText] = useBlockValues('text');
+  const [text, setText, isTextInvalid] = useBlockValues('text');
   const [bgColor, setBgColor] = useBlockValues('backgroundColor');
   const [color, setColor] = useBlockValues('color');
-  const [href, setHref] = useBlockValues('link');
+  const [href, setHref, isHrefInvalid] = useBlockValues('link');
   const [borderRadius, setBorderRadius] = useBlockValues('borderRadius');
   const [fontSize, setFontSize] = useBlockValues('fontSize');
   const [width, setWidth] = useBlockValues('width');
@@ -27,11 +28,14 @@ export const LinkSetting = () => {
     useBlockValues<Positions>('blockPosition');
   const [bgImage, setBgImage] = useBlockValues('backgroundImage');
 
+  const isUrlInValid = !isValidURL(href);
+
   return (
     <div className="flex flex-col space-y-3">
       <div>
         <h3 className="">{t('settings.link.edit_link_text')}</h3>
         <Input
+          isInvalid={isTextInvalid}
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -40,6 +44,7 @@ export const LinkSetting = () => {
       <div>
         <h3 className="">{t('settings.link.edit_link_href')}</h3>
         <Input
+          isInvalid={isHrefInvalid || isUrlInValid}
           type="text"
           value={href}
           onChange={(e) => setHref(e.target.value)}

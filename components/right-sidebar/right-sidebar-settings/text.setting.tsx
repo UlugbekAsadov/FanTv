@@ -10,7 +10,7 @@ import { Positions } from '@/utils/types/properties.type';
 
 export const TextSetting = () => {
   const { t } = useLocaleContext();
-  const [value, onChange] = useBlockValues('text');
+  const [value, onChange, isInvalid] = useBlockValues('text');
   const [color, setColor] = useBlockValues('color');
   const [fontSize, setFontSize] = useBlockValues('fontSize');
   const [position, setPosition] = useBlockValues<Positions>('position');
@@ -21,7 +21,11 @@ export const TextSetting = () => {
     <div className="flex flex-col space-y-3">
       <div className=" mt-3">
         <h3 className="">{t('settings.text.edit_text_value')}</h3>
-        <Textarea value={value} onChange={(e) => onChange(e.target.value)} />
+        <Textarea
+          isInvalid={isInvalid}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
       </div>
       <div>
         <h3 className="">{t('settings.text.edit_text_color')}</h3>

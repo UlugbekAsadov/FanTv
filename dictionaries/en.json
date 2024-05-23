@@ -2,6 +2,8 @@
   "hello": "Hello",
   "save": "Save",
   "saved_message": "Your template saved successfully",
+  "error_field": "You must correctly fill in the required fields before adding a new block!",
+  "link_not_valid": "Url is not valid",
   "sidebar": {
     "add_new_block": "Add new block",
     "background": "Background",

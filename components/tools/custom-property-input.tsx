@@ -26,7 +26,7 @@ export const CustomPropertyInput = ({
   };
 
   const handleBlurInput = (e: FocusEvent<HTMLInputElement>) => {
-    let value = parseInt(e.target.value);
+    let value = parseInt(e.target.value) || 0;
 
     if (!!max && value > max) {
       value = max;

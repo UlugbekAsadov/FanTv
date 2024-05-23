@@ -12,6 +12,8 @@ import {
 } from 'react';
 import { v4 } from 'uuid';
 
+import { useToast } from '@/components/ui/use-toast';
+import { isValidURL } from '@/utils/funcs/is-valid-url';
 import { IAddedBlock, IBlock } from '@/utils/interfaces/block.interface';
 import { IPhoneSize } from '@/utils/interfaces/phone-size.interface';
 import { ITemplate } from '@/utils/interfaces/template.interface';
@@ -22,7 +24,10 @@ import {
 } from '@/utils/mocks/blocks.mock';
 import { phoneSizes } from '@/utils/mocks/phone-sizes.mock';
 import { templateMock } from '@/utils/mocks/template.mock';
+import { toastConfig } from '@/utils/mocks/toast.mock';
 import { Block, EditableBlock } from '@/utils/types/block.type';
+
+import { useLocaleContext } from './locale.context';
 
 interface IPhoneContext {
   currentScreenSize: IPhoneSize;
@@ -62,8 +67,52 @@ export const PhoneContextProvider = ({ children }: IProps) => {
   const [template, setTemplate] = useState<ITemplate>(templateMock);
   const [editingBlockId, setEditingBlockId] = useState<string | null>(null);
   const { username } = useParams();
+  const { toast } = useToast();
+  const { t } = useLocaleContext();
+
+  const validatePreviousBlock = () => {
+    if (!editingBlockId) {
+      return null;
+    }
+
+    const previousBlock = template.blocks.find(
+      (block) => block.id === editingBlockId
+    );
+
+    if (!previousBlock) {
+      throw Error('Previous block was not found');
+    }
+
+    for (const key in previousBlock) {
+      const value = previousBlock[key as keyof IAddedBlock];
+
+      if (key === 'link' && !isValidURL(value as string)) {
+        toast({
+          ...toastConfig,
+          description: t('link_not_valid'),
+          variant: 'destructive',
+        });
+        return true;
+      }
+
+      if (!value) {
+        toast({
+          ...toastConfig,
+          description: t('error_field'),
+          variant: 'destructive',
+        });
+        return true;
+      }
+    }
+
+    return false;
+  };
 
   const handleAddBlock = (block: IBlock) => {
+    const isDirty = validatePreviousBlock();
+
+    if (isDirty) return false;
+
     setSelectedBlock(block);
     const isUnEditableBlock = unEditableBlocks.some(
       (unEditableBlock) => unEditableBlock === block.type
@@ -86,9 +135,14 @@ export const PhoneContextProvider = ({ children }: IProps) => {
   };
 
   const handleClickBlockOnScreen = (blockType: Block, blockId: string) => {
+    const isDirty = validatePreviousBlock();
+
+    if (isDirty) return false;
+
     const clickedBlock = availableBlocks.find(
       (block) => block.type === blockType
     );
+
     setEditingBlockId(blockId);
     if (!clickedBlock) {
       throw Error(
@@ -105,8 +159,6 @@ export const PhoneContextProvider = ({ children }: IProps) => {
     setSelectedBlock(availableBlocks[0]);
     setTemplate((prevState) => ({ ...prevState, blocks: filteredBlock }));
   };
-
-  console.log({template})
 
   const value: IPhoneContext = useMemo(
     () => ({

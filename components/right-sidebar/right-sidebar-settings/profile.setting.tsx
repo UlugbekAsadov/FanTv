@@ -8,7 +8,7 @@ import { useBlockValues } from '@/hooks/useBlockValues';
 export const ProfileSettings = () => {
   const { t } = useLocaleContext();
   const [image, setImage] = useBlockValues('src');
-  const [userName, setUserName] = useBlockValues('text');
+  const [userName, setUserName, isInvalid] = useBlockValues('text');
   const [color, setColor] = useBlockValues('color');
   const [marginBottom, setMarginBottom] = useBlockValues('marginBottom');
   const [marginTop, setMarginTop] = useBlockValues('marginTop');
@@ -19,7 +19,7 @@ export const ProfileSettings = () => {
       <MediaUploader onChange={setImage} value={image} />
       <div className="mt-3">
         <h3>{t('settings.profile.edit_username')}</h3>
-        <Input value={userName} onChange={(e) => setUserName(e.target.value)} />
+        <Input isInvalid={isInvalid} value={userName} onChange={(e) => setUserName(e.target.value)} />
       </div>
       <ColorPicker
         title={t('settings.profile.edit_username_color')}

@@ -5,7 +5,7 @@ import { IAddedBlock } from '@/utils/interfaces/block.interface';
 
 export function useBlockValues<T = string>(
   field: keyof IAddedBlock
-): [T, (value: T) => void] {
+): [T, (value: T) => void, boolean] {
   const { template, setTemplate, editingBlockId } = usePhoneContext();
   const editingBlock = template.blocks.find(
     (block) => block.id === editingBlockId
@@ -35,5 +35,5 @@ export function useBlockValues<T = string>(
     }));
   };
 
-  return [value, onChange];
+  return [value, onChange, !value];
 }
