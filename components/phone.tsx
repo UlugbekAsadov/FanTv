@@ -3,6 +3,7 @@
 import { DragDropContext, Droppable, DropResult } from '@hello-pangea/dnd';
 
 import { usePhoneContext } from '@/context/phone.context';
+import { cn } from '@/lib/utils';
 
 import { Template } from './template';
 
@@ -27,11 +28,15 @@ export const Phone = () => {
           minHeight: `${currentScreenSize.height}px`,
           background: template.background,
         }}
-        className="[&>*]:cursor-pointer h-full scrollbar scrollbar-hide  rounded-5xl border-[15px] border-gray-900 p-3 flex flex-col "
+        className={cn(`[&>*]:cursor-pointer h-full scrollbar scrollbar-hide rounded-5xl  border-[15px] border-gray-900 p-3 flex flex-col relative after:content-['']  after:absolute after:w-[100px] after:bg-black after:left-[35%] after:h-7 after:rounded-full  before:content-[''] before:absolute before:w-[140px] before:bg-white before:left-[28%] before:bottom-2 before:h-1 before:rounded-full`)}
       >
         <Droppable droppableId="s">
           {(provided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+            <div
+              ref={provided.innerRef}
+              className="mt-10"
+              {...provided.droppableProps}
+            >
               <Template isPreview={false} />
             </div>
           )}

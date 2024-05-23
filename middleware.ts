@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
 
   if (pathnameIsMissingValidLocale) {
     return NextResponse.redirect(
-      new URL(`/${defaultLocale}${pathname}`, request.nextUrl.origin)
+      new URL(`/${defaultLocale}${pathname}/constructor`, request.nextUrl.origin)
     );
   }
 }

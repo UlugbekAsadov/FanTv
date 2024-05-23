@@ -4,12 +4,16 @@
   "saved_message": "Your template saved successfully",
   "error_field": "You must correctly fill in the required fields before adding a new block!",
   "link_not_valid": "Url is not valid",
+  "successfully_deleted": "Block deleted successfully",
   "sidebar": {
     "add_new_block": "Add new block",
+    "edit_block": "Edit block",
+    "delete_block": "Delete block",
     "background": "Background",
     "text": "Text",
     "link": "Link",
     "Separator": "Separator",
+    "apply": "Apply",
     "profile": "Profile",
     "donation": "Donation",
     "templates": "Templates"

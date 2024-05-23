@@ -11,13 +11,13 @@ export const PreviewLink = () => {
   const { userName, saveTemplate } = useUserContext();
 
   return (
-    <div className="border border-gray-300 px-3 py-1 rounded-lg flex items-center gap-2 max-w-lg w-full">
-      <Link className="block flex-grow" href={`/${lang}/${userName}`}>
+    <div className="border border-gray-300 px-3 py-1 rounded-lg flex flex-col lg:flex-row items-center gap-2 max-w-lg w-full">
+      <Link className="block flex-grow underline md:list-none w-full text-center lg:text-start" href={`/${lang}/${userName}`}>
         {window.location.origin}/{lang}/{userName}
       </Link>
       <Button
         onClick={saveTemplate}
-        className="text-white flex items-center gap-1 text-sm py-1"
+        className="text-white flex items-center gap-1 text-sm py-1 w-full lg:w-fit"
       >
         <SaveIcon width={18} />
         {t('save')}

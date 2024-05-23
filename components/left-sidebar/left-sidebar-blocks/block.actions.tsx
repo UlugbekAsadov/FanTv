@@ -16,7 +16,7 @@ export const BlockActions = ({ blockId }: IProps) => {
   return (
     <div
       onClick={handleRemoveBlock.bind(null, blockId)}
-      className="absolute -left-24 top-0 bg-white rounded-full border p-3 group  cursor-pointer"
+      className="absolute -left-24 top-0 bg-white rounded-full border p-3 group  cursor-pointer hidden lg:block"
     >
       <TrashIcon className="text-gray-300 transition group-hover:text-black" />
     </div>

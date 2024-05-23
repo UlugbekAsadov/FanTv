@@ -76,5 +76,7 @@ export const UserContextProvider = ({ children }: IProps) => {
     () => ({ userName: mockUserName, userTemplate, saveTemplate }),
     [userTemplate, saveTemplate]
   );
+
+  console.log('render');
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

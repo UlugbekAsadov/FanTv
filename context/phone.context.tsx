@@ -16,6 +16,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { isValidURL } from '@/utils/funcs/is-valid-url';
 import { IAddedBlock, IBlock } from '@/utils/interfaces/block.interface';
 import { IPhoneSize } from '@/utils/interfaces/phone-size.interface';
+import { ISidebarOpenState } from '@/utils/interfaces/sidebar.interface';
 import { ITemplate } from '@/utils/interfaces/template.interface';
 import {
   availableBlocks,
@@ -41,6 +42,10 @@ interface IPhoneContext {
   editingBlockId: string | null;
   setTemplate: Dispatch<SetStateAction<ITemplate>>;
   isPreview: boolean;
+  setIsSidebarOpen: Dispatch<SetStateAction<ISidebarOpenState>>;
+  isSidebarOpen: ISidebarOpenState;
+  setEditingBlockId: Dispatch<SetStateAction<string | null>>;
+  validatePreviousBlock: () => boolean;
 }
 
 const PhoneContext = createContext<IPhoneContext | null>(null);
@@ -66,13 +71,17 @@ export const PhoneContextProvider = ({ children }: IProps) => {
   );
   const [template, setTemplate] = useState<ITemplate>(templateMock);
   const [editingBlockId, setEditingBlockId] = useState<string | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<ISidebarOpenState>({
+    left: false,
+    right: false,
+  });
   const { username } = useParams();
   const { toast } = useToast();
   const { t } = useLocaleContext();
 
   const validatePreviousBlock = () => {
     if (!editingBlockId) {
-      return null;
+      return false;
     }
 
     const previousBlock = template.blocks.find(
@@ -113,6 +122,7 @@ export const PhoneContextProvider = ({ children }: IProps) => {
 
     if (isDirty) return false;
 
+    setIsSidebarOpen((prevVal) => ({ ...prevVal, left: false, right: true }));
     setSelectedBlock(block);
     const isUnEditableBlock = unEditableBlocks.some(
       (unEditableBlock) => unEditableBlock === block.type
@@ -151,6 +161,7 @@ export const PhoneContextProvider = ({ children }: IProps) => {
     }
 
     setSelectedBlock(clickedBlock);
+    setIsSidebarOpen((prevVal) => ({ ...prevVal, left: false, right: true }));
   };
 
   const handleRemoveBlock = (id: string) => {
@@ -158,6 +169,8 @@ export const PhoneContextProvider = ({ children }: IProps) => {
     setEditingBlockId(null);
     setSelectedBlock(availableBlocks[0]);
     setTemplate((prevState) => ({ ...prevState, blocks: filteredBlock }));
+    setIsSidebarOpen((prevVal) => ({ ...prevVal, right: false }));
+    toast({ ...toastConfig, description: t('successfully_deleted') });
   };
 
   const value: IPhoneContext = useMemo(
@@ -173,8 +186,12 @@ export const PhoneContextProvider = ({ children }: IProps) => {
       editingBlockId,
       setTemplate,
       isPreview: !!username,
+      setIsSidebarOpen,
+      isSidebarOpen,
+      setEditingBlockId,
+      validatePreviousBlock,
     }),
-    [currentScreenSize, selectedBlock, template, editingBlockId]
+    [currentScreenSize, selectedBlock, template, editingBlockId, isSidebarOpen]
   );
 
   return (

@@ -36,7 +36,7 @@ export const ProfileBlock = ({ addedBlock }: IProps) => {
             />
           ) : (
             <div className="w-16 h-16 rounded-full flex items-center justify-center">
-              <CircleUserIcon />
+              <CircleUserIcon className='text-white' />
             </div>
           )}
         </div>
