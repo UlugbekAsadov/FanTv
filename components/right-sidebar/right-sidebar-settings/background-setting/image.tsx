@@ -1,4 +1,4 @@
-import { MediaUplaoder } from '@/components/media-uploader';
+import { MediaUploader } from '@/components/tools/media-uploader';
 
 export const BackgroundImage = () => {
   const value = '';
@@ -6,5 +6,5 @@ export const BackgroundImage = () => {
     return null;
   };
 
-  return <MediaUplaoder value={value} onChange={onChange} />;
+  return <MediaUploader value={value} onChange={onChange} />;
 };

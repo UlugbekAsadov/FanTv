@@ -3,8 +3,10 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 
+import { Toaster } from '@/components/ui/toaster';
 import { LocaleContextProvider } from '@/context/locale.context';
 import { PhoneContextProvider } from '@/context/phone.context';
+import { UserContextProvider } from '@/context/user.context';
 
 const inter = Nunito({ subsets: ['latin'] });
 
@@ -22,7 +24,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <LocaleContextProvider>
-          <PhoneContextProvider>{children}</PhoneContextProvider>
+          <PhoneContextProvider>
+            <UserContextProvider>
+              {children}
+              <Toaster />
+            </UserContextProvider>
+          </PhoneContextProvider>
         </LocaleContextProvider>
       </body>
     </html>

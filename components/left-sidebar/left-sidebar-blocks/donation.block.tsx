@@ -170,7 +170,8 @@ export const DonationBlock = ({ addedBlock }: IProps) => {
             />
           </div>
           <p className="text-sm text-telegram-hint mt-1">
-            {t('blocks.donation.min')}: {formatCurrency(MIN_DONATION)} UZS
+            {t('blocks.donation.min')}:{' '}
+            {formatCurrency(MIN_DONATION)} UZS
           </p>
           <div
             className={cn(

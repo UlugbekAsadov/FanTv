@@ -1,7 +1,7 @@
-import { ColorPicker } from '@/components/color-picker';
-import { CurstomPropertyInput } from '@/components/custom-property-input';
-import { CustomSelect } from '@/components/custom-select';
-import { PositionSelectSetting } from '@/components/position-select-setting';
+import { ColorPicker } from '@/components/tools/color-picker';
+import { CustomPropertyInput } from '@/components/tools/custom-property-input';
+import { CustomSelect } from '@/components/tools/custom-select';
+import { PositionSelectSetting } from '@/components/tools/position-select-setting';
 import { useLocaleContext } from '@/context/locale.context';
 import { useBlockValues } from '@/hooks/useBlockValues';
 import { defaultWidth } from '@/utils/mocks/properties.mock';
@@ -35,7 +35,7 @@ export const SeparatorSetting = () => {
         value={blockPosition}
         onChange={setBlockPosition}
       />
-      <CurstomPropertyInput
+      <CustomPropertyInput
         onChange={setMarginTop}
         title={t('settings.properties.margin_top')}
         value={marginTop}
@@ -43,7 +43,7 @@ export const SeparatorSetting = () => {
         min={5}
         type="number"
       />
-      <CurstomPropertyInput
+      <CustomPropertyInput
         onChange={setMarginBottom}
         title={t('settings.properties.margin_bottom')}
         value={marginBottom}

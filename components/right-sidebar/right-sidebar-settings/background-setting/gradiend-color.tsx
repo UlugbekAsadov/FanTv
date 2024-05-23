@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ColorResult } from 'react-color';
 
-import { ColorPicker } from '@/components/color-picker';
+import { ColorPicker } from '@/components/tools/color-picker';
 import { useLocaleContext } from '@/context/locale.context';
 import { usePhoneContext } from '@/context/phone.context';
 import { useGradientColor } from '@/hooks/useGradientColor';

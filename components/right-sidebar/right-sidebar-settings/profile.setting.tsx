@@ -1,6 +1,6 @@
-import { ColorPicker } from '@/components/color-picker';
-import { CurstomPropertyInput } from '@/components/custom-property-input';
-import { MediaUplaoder } from '@/components/media-uploader';
+import { ColorPicker } from '@/components/tools/color-picker';
+import { CustomPropertyInput } from '@/components/tools/custom-property-input';
+import { MediaUploader } from '@/components/tools/media-uploader';
 import { Input } from '@/components/ui/input';
 import { useLocaleContext } from '@/context/locale.context';
 import { useBlockValues } from '@/hooks/useBlockValues';
@@ -16,7 +16,7 @@ export const ProfileSettings = () => {
 
   return (
     <div className="flex flex-col space-y-3">
-      <MediaUplaoder onChange={setImage} value={image} />
+      <MediaUploader onChange={setImage} value={image} />
       <div className="mt-3">
         <h3>{t('settings.profile.edit_username')}</h3>
         <Input value={userName} onChange={(e) => setUserName(e.target.value)} />
@@ -26,7 +26,7 @@ export const ProfileSettings = () => {
         color={color}
         onChange={(e) => setColor(e.hex)}
       />
-      <CurstomPropertyInput
+      <CustomPropertyInput
         onChange={setMarginTop}
         title={t('settings.properties.margin_top')}
         value={marginTop}
@@ -34,7 +34,7 @@ export const ProfileSettings = () => {
         min={5}
         type="number"
       />
-      <CurstomPropertyInput
+      <CustomPropertyInput
         onChange={setMarginBottom}
         title={t('settings.properties.margin_bottom')}
         value={marginBottom}
@@ -42,7 +42,7 @@ export const ProfileSettings = () => {
         min={5}
         type="number"
       />
-      <CurstomPropertyInput
+      <CustomPropertyInput
         onChange={setFontSize}
         title={t('settings.properties.font_size')}
         value={fontSize}

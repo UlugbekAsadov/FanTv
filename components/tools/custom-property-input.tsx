@@ -1,6 +1,6 @@
 import { ChangeEvent, FocusEvent, ReactNode } from 'react';
 
-import { Input } from './ui/input';
+import { Input } from '../ui/input';
 
 interface IProps {
   title: ReactNode;
@@ -11,7 +11,7 @@ interface IProps {
   type?: string;
 }
 
-export const CurstomPropertyInput = ({
+export const CustomPropertyInput = ({
   onChange,
   title,
   value,

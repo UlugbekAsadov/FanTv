@@ -1,7 +1,7 @@
-import { ColorPicker } from '@/components/color-picker';
-import { CustomSelect } from '@/components/custom-select';
-import { MediaUplaoder } from '@/components/media-uploader';
-import { PositionSelectSetting } from '@/components/position-select-setting';
+import { ColorPicker } from '@/components/tools/color-picker';
+import { CustomSelect } from '@/components/tools/custom-select';
+import { MediaUploader } from '@/components/tools/media-uploader';
+import { PositionSelectSetting } from '@/components/tools/position-select-setting';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useLocaleContext } from '@/context/locale.context';
@@ -59,7 +59,7 @@ export const LinkSetting = () => {
           />
         </TabsContent>
         <TabsContent value="image">
-          <MediaUplaoder value={bgImage} onChange={setBgImage} />
+          <MediaUploader value={bgImage} onChange={setBgImage} />
         </TabsContent>
       </Tabs>
 

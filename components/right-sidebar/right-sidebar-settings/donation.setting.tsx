@@ -1,4 +1,4 @@
-import { ColorPicker } from '@/components/color-picker';
+import { ColorPicker } from '@/components/tools/color-picker';
 import { useLocaleContext } from '@/context/locale.context';
 import { useBlockValues } from '@/hooks/useBlockValues';
 

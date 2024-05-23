@@ -1,5 +1,6 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import {
   createContext,
   Dispatch,
@@ -34,6 +35,7 @@ interface IPhoneContext {
   handleRemoveBlock: (blockId: string) => void;
   editingBlockId: string | null;
   setTemplate: Dispatch<SetStateAction<ITemplate>>;
+  isPreview: boolean;
 }
 
 const PhoneContext = createContext<IPhoneContext | null>(null);
@@ -59,6 +61,7 @@ export const PhoneContextProvider = ({ children }: IProps) => {
   );
   const [template, setTemplate] = useState<ITemplate>(templateMock);
   const [editingBlockId, setEditingBlockId] = useState<string | null>(null);
+  const { username } = useParams();
 
   const handleAddBlock = (block: IBlock) => {
     setSelectedBlock(block);
@@ -88,7 +91,9 @@ export const PhoneContextProvider = ({ children }: IProps) => {
     );
     setEditingBlockId(blockId);
     if (!clickedBlock) {
-      throw Error('Clicked block is not found on available blocks list');
+      throw Error(
+        'Clicked block is not found on available left-sidebar-blocks list'
+      );
     }
 
     setSelectedBlock(clickedBlock);
@@ -100,6 +105,8 @@ export const PhoneContextProvider = ({ children }: IProps) => {
     setSelectedBlock(availableBlocks[0]);
     setTemplate((prevState) => ({ ...prevState, blocks: filteredBlock }));
   };
+
+  console.log({template})
 
   const value: IPhoneContext = useMemo(
     () => ({
@@ -113,6 +120,7 @@ export const PhoneContextProvider = ({ children }: IProps) => {
       handleRemoveBlock,
       editingBlockId,
       setTemplate,
+      isPreview: !!username,
     }),
     [currentScreenSize, selectedBlock, template, editingBlockId]
   );

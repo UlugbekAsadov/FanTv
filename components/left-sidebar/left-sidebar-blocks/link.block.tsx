@@ -16,7 +16,7 @@ export const LinkBlock = ({ addedBlock }: IProps) => {
     backgroundColor,
     type,
     id,
-    link,
+    link = '#',
     borderRadius,
     fontSize,
     width,
@@ -26,13 +26,14 @@ export const LinkBlock = ({ addedBlock }: IProps) => {
     marginTop,
     backgroundImage,
   } = addedBlock;
-  const { handleClickBlockOnScreen, editingBlockId } = usePhoneContext();
+  const { handleClickBlockOnScreen, editingBlockId, isPreview } =
+    usePhoneContext();
 
   return (
     <div className="relative">
       <Link
         className="  min-h-[56px] h-full overflow-hidden w-full flex flex-col"
-        href={link || '#'}
+        href={isPreview ? link : '#'}
         style={{
           alignItems: blockPosition,
         }}

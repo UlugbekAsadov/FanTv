@@ -1,3 +1,5 @@
+import { Positions } from '@/utils/types/properties.type';
+
 import { IAddedBlock } from '../interfaces/block.interface';
 
 export type Block =
@@ -12,8 +14,8 @@ export type Block =
 export type EditableBlock = Exclude<Block, 'Background' | 'Templates'>;
 export type UnEditableBlock = Extract<Block, 'Background' | 'Templates'>;
 
-export type IDefaultSetting = {
+export type IBlockDefaultSetting = {
   [key in EditableBlock]: IAddedBlock;
 };
 
-export type BlockPositions = 'start' | 'center' | 'end';
+export type BlockPositions = Positions;

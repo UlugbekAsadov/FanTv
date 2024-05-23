@@ -5,7 +5,7 @@ import { usePhoneContext } from '@/context/phone.context';
 import { cn } from '@/lib/utils';
 import { availableBlocks } from '@/utils/mocks/blocks.mock';
 
-export const Sidebar = () => {
+export const LeftSidebar = () => {
   const { t } = useLocaleContext();
   const { selectedBlock, handleAddBlock } = usePhoneContext();
 

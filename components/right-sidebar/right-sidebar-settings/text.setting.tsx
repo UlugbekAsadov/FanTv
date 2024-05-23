@@ -1,7 +1,7 @@
-import { ColorPicker } from '@/components/color-picker';
-import { CurstomPropertyInput } from '@/components/custom-property-input';
-import { CustomSelect } from '@/components/custom-select';
-import { PositionSelectSetting } from '@/components/position-select-setting';
+import { ColorPicker } from '@/components/tools/color-picker';
+import { CustomPropertyInput } from '@/components/tools/custom-property-input';
+import { CustomSelect } from '@/components/tools/custom-select';
+import { PositionSelectSetting } from '@/components/tools/position-select-setting';
 import { Textarea } from '@/components/ui/textarea';
 import { useLocaleContext } from '@/context/locale.context';
 import { useBlockValues } from '@/hooks/useBlockValues';
@@ -38,14 +38,14 @@ export const TextSetting = () => {
         value={position}
         onChange={setPosition}
       />
-      <CurstomPropertyInput
+      <CustomPropertyInput
         title={t('settings.properties.margin_top')}
         onChange={setMarginTop}
         value={marginTop}
         max={64}
         min={5}
       />
-      <CurstomPropertyInput
+      <CustomPropertyInput
         title={t('settings.properties.margin_bottom')}
         onChange={setMarginBottom}
         value={marginBottom}

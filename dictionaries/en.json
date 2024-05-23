@@ -1,5 +1,7 @@
 {
   "hello": "Hello",
+  "save": "Save",
+  "saved_message": "Your template saved successfully",
   "sidebar": {
     "add_new_block": "Add new block",
     "background": "Background",

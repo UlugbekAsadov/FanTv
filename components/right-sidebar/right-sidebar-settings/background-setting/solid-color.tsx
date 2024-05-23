@@ -1,6 +1,6 @@
 import { ColorResult } from 'react-color';
 
-import { ColorPicker } from '@/components/color-picker';
+import { ColorPicker } from '@/components/tools/color-picker';
 import { usePhoneContext } from '@/context/phone.context';
 
 export const SolidColor = () => {

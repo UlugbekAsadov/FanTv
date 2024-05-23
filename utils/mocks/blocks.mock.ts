@@ -10,7 +10,7 @@ import {
 import { v4 } from 'uuid';
 
 import { IBlock } from '../interfaces/block.interface';
-import { IDefaultSetting, UnEditableBlock } from '../types/block.type';
+import { IBlockDefaultSetting, UnEditableBlock } from '../types/block.type';
 
 export const availableBlocks: IBlock[] = [
   { icon: PaletteIcon, title: 'sidebar.templates', type: 'Templates' },
@@ -22,14 +22,14 @@ export const availableBlocks: IBlock[] = [
   { icon: DollarSignIcon, title: 'sidebar.donation', type: 'Donate' },
 ];
 
-export const defaultSettings: IDefaultSetting = {
+export const defaultSettings: IBlockDefaultSetting = {
   Button: {
     id: v4(),
     color: '#ffffff',
     backgroundColor: '#000000',
     text: 'New Button',
     type: 'Button',
-    link: undefined,
+    link: "",
     fontSize: '16',
     borderRadius: '8',
     width: '100',

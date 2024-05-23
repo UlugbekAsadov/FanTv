@@ -7,9 +7,9 @@ interface IProps {
 }
 
 export const BlockActions = ({ blockId }: IProps) => {
-  const { handleRemoveBlock } = usePhoneContext();
+  const { handleRemoveBlock, isPreview } = usePhoneContext();
 
-  if (!blockId) {
+  if (!blockId || isPreview) {
     return null;
   }
 
