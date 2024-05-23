@@ -29,11 +29,13 @@ export const LinkBlock = ({ addedBlock }: IProps) => {
   const { handleClickBlockOnScreen, editingBlockId, isPreview } =
     usePhoneContext();
 
+  const Wrapper = isPreview ? Link : 'div';
+
   return (
     <div className="relative">
-      <Link
+      <Wrapper
         className="  min-h-[56px] h-full overflow-hidden w-full flex flex-col"
-        href={isPreview ? link : '#'}
+        href={link}
         style={{
           alignItems: blockPosition,
         }}
@@ -56,7 +58,7 @@ export const LinkBlock = ({ addedBlock }: IProps) => {
         >
           {text}
         </div>
-      </Link>
+      </Wrapper>
       {editingBlockId === id ? <BlockActions blockId={editingBlockId} /> : null}
     </div>
   );

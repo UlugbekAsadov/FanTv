@@ -11,10 +11,10 @@ import {
 import { useLocalStorage } from 'react-use';
 
 import { useToast } from '@/components/ui/use-toast';
-import { cn } from '@/lib/utils';
 import { onBeforeUnload } from '@/utils/funcs/before-unload';
 import { ITemplate } from '@/utils/interfaces/template.interface';
 import { templateMock } from '@/utils/mocks/template.mock';
+import { toastConfig } from '@/utils/mocks/toast.mock';
 import { mockUserName } from '@/utils/mocks/user.mock';
 
 import { useLocaleContext } from './locale.context';
@@ -52,10 +52,8 @@ export const UserContextProvider = ({ children }: IProps) => {
 
   const saveTemplate = useCallback(() => {
     toast({
+      ...toastConfig,
       description: t('saved_message'),
-      className: cn(
-        'top-0 right-0 flex fixed md:max-w-[420px] md:top-4 md:right-4 '
-      ),
     });
     setUserTemplate(template);
   }, [setUserTemplate, t, template, toast]);

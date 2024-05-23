@@ -1,6 +1,6 @@
 'use client';
 
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, DropResult } from '@hello-pangea/dnd';
 
 import { usePhoneContext } from '@/context/phone.context';
 
@@ -29,7 +29,7 @@ export const Phone = () => {
         }}
         className="[&>*]:cursor-pointer h-full scrollbar scrollbar-hide  rounded-5xl border-[15px] border-gray-900 p-3 flex flex-col "
       >
-        <Droppable droppableId="droppable">
+        <Droppable droppableId="s">
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
               <Template isPreview={false} />

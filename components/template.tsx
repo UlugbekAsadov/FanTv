@@ -1,6 +1,6 @@
 'use client';
 
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable } from '@hello-pangea/dnd';
 
 import { DonationBlock } from '@/components/left-sidebar/left-sidebar-blocks/donation.block';
 import { LinkBlock } from '@/components/left-sidebar/left-sidebar-blocks/link.block';
