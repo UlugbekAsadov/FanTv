@@ -1,17 +1,18 @@
 'use client';
 
 import { HomeIcon } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
+
+import { Logo } from './logo';
 
 export const Sidebar = () => {
   const isActive = true;
   return (
     <div className="flex max-w-[250px] w-full flex-col h-dvh  px-4 bg-background">
       <div className="flex-1 overflow-auto py-2">
-        <Image src="/logo.svg" alt="fantv logo" width={64} height={64} />
+        <Logo />
         <nav className="grid items-start text-sm font-medium">
           <Link
             className={cn(

@@ -30,7 +30,6 @@ export const BloggerCardHeader = () => {
 
       <div>
         <Button className="rounded-full">Subscribe</Button>
-        <p className='text-xs text-center'>233 fans</p>
       </div>
     </div>
   );

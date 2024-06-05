@@ -19,7 +19,7 @@ export const BloggerPreviewVideoCard = () => {
           <LockIcon className='text-card-foreground' />
         </div>
       </div>
-      <Link href="/" className="text-sm line-clamp-2 mt-2 leading-4">
+      <Link href={`/watch?v=${1}`} className="text-sm line-clamp-2 mt-2 leading-4">
         Korish shart bolgan top 5 ta kinolar ingliz tilida
       </Link>
       <div className="flex items-center gap-2 text-xs mt-2 w-full text-gray-400">
