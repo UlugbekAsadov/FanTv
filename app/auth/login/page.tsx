@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 import { ILoginForm } from '@/utils/interfaces/auth.interface';
 import { loginFormMock } from '@/utils/mocks/login/login-form.mock';
 
-export function Page() {
+function Page() {
   const {
     register,
     handleSubmit,
