@@ -7,9 +7,9 @@ export const MainLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="flex">
+    <div className="flex bg-secondary">
       <Sidebar />
-      <div className="flex-grow bg-secondary h-dvh overflow-y-scroll">
+      <div className="flex-grow  h-dvh overflow-y-scroll max-w-6xl w-full mx-auto">
         <Header />
         <div className="flex flex-1 flex-col p-4">{children}</div>
       </div>

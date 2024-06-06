@@ -1,6 +1,6 @@
 import { MainLayout } from '@/layout/main-layout';
 
-const HomeLayout = ({
+const ChannelLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -8,4 +8,4 @@ const HomeLayout = ({
   return <MainLayout>{children}</MainLayout>;
 };
 
-export default HomeLayout;
+export default ChannelLayout;

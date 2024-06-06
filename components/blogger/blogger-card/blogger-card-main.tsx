@@ -1,13 +1,5 @@
-import { BloggerPreviewVideoCard } from './blogger-preview-video-card';
+import { VideoCardGroup } from '@/components/videos/video-card-group';
 
 export const BloggerCardMain = () => {
-  return (
-    <div className='grid grid-cols-5 gap-2 p-2'>
-      <BloggerPreviewVideoCard />
-      <BloggerPreviewVideoCard />
-      <BloggerPreviewVideoCard />
-      <BloggerPreviewVideoCard />
-      <BloggerPreviewVideoCard />
-    </div>
-  );
+  return <VideoCardGroup  className='grid-cols-5'/>;
 };
