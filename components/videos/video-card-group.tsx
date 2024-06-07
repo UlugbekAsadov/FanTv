@@ -14,6 +14,7 @@ export const VideoCardGroup = ({ className }: IProps) => {
       <VideoCard />
       <VideoCard />
       <VideoCard />
+      <VideoCard />
     </div>
   );
 };

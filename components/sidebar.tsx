@@ -1,29 +1,15 @@
 'use client';
 
-import { HomeIcon } from 'lucide-react';
-import Link from 'next/link';
-
-import { cn } from '@/lib/utils';
-
 import { Logo } from './logo';
+import { NavLinks } from './nav-links';
 
 export const Sidebar = () => {
-  const isActive = true;
   return (
-    <div className="flex max-w-[250px] w-full flex-col h-dvh  px-4 bg-background">
+    <div className=" max-w-[250px] w-full flex-col h-dvh  px-4 bg-background hidden md:flex">
       <div className="flex-1 overflow-auto py-2">
         <Logo />
         <nav className="grid items-start text-sm font-medium">
-          <Link
-            className={cn(
-              'flex items-center gap-3 rounded-lg px-3 py-2 text-black transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50',
-              isActive && 'bg-muted'
-            )}
-            href="/home"
-          >
-            <HomeIcon className="h-5 w-5 text-primary" />
-            Home
-          </Link>
+          <NavLinks withActiveBg withIcon />
         </nav>
       </div>
     </div>

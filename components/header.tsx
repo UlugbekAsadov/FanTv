@@ -12,6 +12,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Theme } from '@/utils/enums/theme.enum';
 
+import { Logo } from './logo';
+import { NavLinks } from './nav-links';
 import { Button } from './ui/button';
 
 export const Header = () => {
@@ -22,7 +24,10 @@ export const Header = () => {
   };
 
   return (
-    <header className="flex h-16 items-center w-full justify-end px-6 sticky top-0 z-10">
+    <header className="flex h-16 items-center w-full justify-between md:justify-end px-6 sticky bg-background md:bg-transparent top-0 z-10">
+      <div className="block md:hidden">
+        <Logo />
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild className="bg-background rounded-full">
           <div className="flex p-2 items-center cursor-pointer shadow-sm ">
@@ -49,6 +54,10 @@ export const Header = () => {
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
+          <div className="block md:hidden">
+            <NavLinks asDropdownItem />
+          </div>
+
           <DropdownMenuItem onClick={handleToggleTheme}>
             {theme === Theme.Dark ? (
               <div className="flex items-center gap-2 flex-row-reverse">
@@ -63,6 +72,7 @@ export const Header = () => {
               </div>
             )}
           </DropdownMenuItem>
+
           <DropdownMenuItem>Logout</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -9,8 +9,8 @@ export default function Home() {
       <h1>Available routes</h1>
       {availableRoutes.map((route, index) => (
         <div key={index} className='underline text-blue-400'>
-          <Link href={route} >
-            {route}
+          <Link href={route.path} >
+            {route.title}
           </Link>
         </div>
       ))}
