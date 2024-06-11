@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useGetMe } from '@/react-query/hooks/hooks';
 import { Theme } from '@/utils/enums/theme.enum';
 
 import { Logo } from './logo';
@@ -18,7 +19,7 @@ import { Button } from './ui/button';
 
 export const Header = () => {
   const { setTheme, theme } = useTheme();
-
+  const { data: user } = useGetMe();
   const handleToggleTheme = () => {
     setTheme(theme === Theme.Dark ? Theme.Light : Theme.Dark);
   };
@@ -28,6 +29,7 @@ export const Header = () => {
       <div className="block md:hidden">
         <Logo />
       </div>
+
       <DropdownMenu>
         <DropdownMenuTrigger asChild className="bg-background rounded-full">
           <div className="flex p-2 items-center cursor-pointer shadow-sm ">
@@ -73,7 +75,7 @@ export const Header = () => {
             )}
           </DropdownMenuItem>
 
-          <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuItem>{user ? 'Logout' : 'Login'}</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </header>
