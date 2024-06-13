@@ -2,6 +2,8 @@
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { DialogProvider } from '@/context/dialog.context';
+
 export default function ReactQueryProvider({
   children,
 }: Readonly<{
@@ -17,6 +19,8 @@ export default function ReactQueryProvider({
     },
   });
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <DialogProvider>{children}</DialogProvider>
+    </QueryClientProvider>
   );
 }

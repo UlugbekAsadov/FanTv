@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import PhoneInputWithCountry from 'react-phone-number-input/react-hook-form';
 
@@ -7,10 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import { useRegister } from '@/react-query/hooks/hooks';
 import { IRegisterForm } from '@/utils/interfaces/auth.interface';
 import { registerFormMock } from '@/utils/mocks/login/login-form.mock';
 
-const Page = () => {
+interface IProps {
+  setCurrentScreen: (value: 'telegram' | 'login') => void;
+}
+
+const Register = ({ setCurrentScreen }: IProps) => {
   const {
     control,
     register,
@@ -22,13 +26,14 @@ const Page = () => {
   });
 
   const passwordValue = getValues('password');
+  const { mutateAsync: addMutate } = useRegister();
 
   const handleSubmitForm = (values: IRegisterForm) => {
-    console.log({ values });
+    addMutate(values);
   };
 
   return (
-    <div className="flex items-center justify-center py-12">
+    <div className="flex items-center justify-center ">
       <form
         onSubmit={handleSubmit(handleSubmitForm)}
         className="mx-auto w-[350px] space-y-6"
@@ -40,6 +45,18 @@ const Page = () => {
           </p>
         </div>
         <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="username">Full name</Label>
+            <Input
+              id="username"
+              isInvalid={!!errors.password}
+              placeholder="John Doe"
+              {...register('fullName', { required: 'This field is required' })}
+            />
+            {errors.username ? (
+              <p className="form_error_message">{errors.fullName?.message}</p>
+            ) : null}
+          </div>
           <div className="space-y-2">
             <Label htmlFor="username">Username</Label>
             <Input
@@ -120,9 +137,21 @@ const Page = () => {
         <div className="text-center">
           <p className="text-gray-500 dark:text-gray-400">
             Already have an account?
-            <Link className="text-blue-600 underline ml-2" href="/auth/login">
-              Sign in
-            </Link>
+            <p className=" gap-1 ml-2 cursor-pointer w-full   ">
+              <span
+                className="text-blue-600 mr-2"
+                onClick={setCurrentScreen.bind(null, 'login')}
+              >
+                Sig in
+              </span>
+              |
+              <span
+                className="text-blue-600 ml-2"
+                onClick={setCurrentScreen.bind(null, 'telegram')}
+              >
+                Sig in by telegram
+              </span>
+            </p>
           </p>
         </div>
       </form>
@@ -130,4 +159,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Register;

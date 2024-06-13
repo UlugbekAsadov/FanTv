@@ -1,18 +1,47 @@
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 
 import Services from '@/react-query/services/services';
-import { ILoginForm } from '@/utils/interfaces/auth.interface';
+import {
+  ILoginForm,
+  IOtpForm,
+  IRegisterForm,
+} from '@/utils/interfaces/auth.interface';
 import { IUser } from '@/utils/interfaces/user';
 
-const useLogin = (value: ILoginForm) => {
-  const queryClient = useQueryClient();
+const useLogin = () => {
   return useMutation(
-    () => {
+    (value: ILoginForm) => {
       return Services.login(value);
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('posts');
+        //handle success
+      },
+    }
+  );
+};
+
+const useRegister = () => {
+  return useMutation(
+    (value: IRegisterForm) => {
+      return Services.register(value);
+    },
+    {
+      onSuccess: () => {
+        //handle success
+      },
+    }
+  );
+};
+
+const useCheckOtp = () => {
+  return useMutation(
+    (value: IOtpForm) => {
+      return Services.telegramCheckOtp(value);
+    },
+    {
+      onSuccess: () => {
+        //handle success
       },
     }
   );
@@ -25,4 +54,4 @@ const useGetMe = () => {
   });
 };
 
-export { useGetMe, useLogin };
+export { useCheckOtp, useGetMe, useLogin, useRegister };

@@ -10,9 +10,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useDialog } from '@/context/dialog.context';
 import { useGetMe } from '@/react-query/hooks/hooks';
 import { Theme } from '@/utils/enums/theme.enum';
 
+import AuthModal from './auth/auth';
 import { Logo } from './logo';
 import { NavLinks } from './nav-links';
 import { Button } from './ui/button';
@@ -20,6 +22,7 @@ import { Button } from './ui/button';
 export const Header = () => {
   const { setTheme, theme } = useTheme();
   const { data: user } = useGetMe();
+  const { onOpen } = useDialog();
   const handleToggleTheme = () => {
     setTheme(theme === Theme.Dark ? Theme.Light : Theme.Dark);
   };
@@ -75,9 +78,12 @@ export const Header = () => {
             )}
           </DropdownMenuItem>
 
-          <DropdownMenuItem>{user ? 'Logout' : 'Login'}</DropdownMenuItem>
+          <DropdownMenuItem onClick={onOpen}>
+            {user ? 'Logout' : 'Login'}
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      <AuthModal />
     </header>
   );
 };

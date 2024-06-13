@@ -1,7 +1,9 @@
-import axios from 'axios';
-
 import axiosInstance from '@/utils/api/api';
-import { ILoginForm } from '@/utils/interfaces/auth.interface';
+import {
+  ILoginForm,
+  IOtpForm,
+  IRegisterForm,
+} from '@/utils/interfaces/auth.interface';
 import { IUser } from '@/utils/interfaces/user';
 
 export interface Post {
@@ -18,15 +20,27 @@ class Services {
    * @returns
    */
   async login(loginValue: ILoginForm) {
-    const res = await axios.post(
-      'http://localhost:9000/v1/auth/login',
-      loginValue,
-      {
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      }
-    );
+    const res = await axiosInstance.post('/auth/login/', loginValue);
+    return res;
+  }
+
+  /**
+   *To Register
+   * @param registerValue
+   * @returns
+   */
+  async register(registerValue: IRegisterForm) {
+    const res = await axiosInstance.post('/auth/register/', registerValue);
+    return res;
+  }
+
+  /**
+   *Telegram check otp
+   * @param registerValue
+   * @returns
+   */
+  async telegramCheckOtp(value: IOtpForm) {
+    const res = await axiosInstance.post('/auth/telegram-check-otp', value);
     return res;
   }
 
@@ -36,7 +50,7 @@ class Services {
    */
 
   async getMe(): Promise<IUser> {
-    const res = await axiosInstance.get('http://localhost:9000/api/v1/me');
+    const res = await axiosInstance.get('/me');
     return res.data;
   }
 }
