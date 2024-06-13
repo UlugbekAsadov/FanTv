@@ -1,6 +1,4 @@
 'use client';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import PhoneInputWithCountry from 'react-phone-number-input/react-hook-form';
 
@@ -8,10 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import { useLogin } from '@/react-query/hooks/hooks';
 import { ILoginForm } from '@/utils/interfaces/auth.interface';
 import { loginFormMock } from '@/utils/mocks/login/login-form.mock';
 
-function Page() {
+interface IProps {
+  setCurrentScreen: (value: 'register' | 'telegram') => void;
+}
+
+function Login({ setCurrentScreen }: IProps) {
   const {
     register,
     handleSubmit,
@@ -20,11 +23,11 @@ function Page() {
   } = useForm<ILoginForm>({
     defaultValues: loginFormMock,
   });
-  const router = useRouter();
 
-  const handleSubmitForm = (values: ILoginForm) => {
-    console.log({ values });
-    router.push('/');
+  const { mutateAsync: addMutate } = useLogin();
+
+  const handleSubmitForm = async (values: ILoginForm) => {
+    addMutate(values);
   };
 
   return (
@@ -92,12 +95,21 @@ function Page() {
         <div className="text-center">
           <p className="text-gray-500 dark:text-gray-400">
             Dont have an account?
-            <Link
-              className="text-blue-600 underline ml-2"
-              href="/auth/register"
-            >
-              Register
-            </Link>
+            <p className=" gap-1 ml-2 cursor-pointer w-full   ">
+              <span
+                className="text-blue-600 mr-2"
+                onClick={setCurrentScreen.bind(null, 'register')}
+              >
+                Register
+              </span>
+              |
+              <span
+                className="text-blue-600 ml-2"
+                onClick={setCurrentScreen.bind(null, 'telegram')}
+              >
+                Register By Telegram
+              </span>
+            </p>
           </p>
         </div>
       </form>
@@ -105,4 +117,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default Login;

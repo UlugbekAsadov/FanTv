@@ -13,14 +13,4 @@ export const availableRoutes: IRoute[] = [
     title: 'Channel',
     isHidden: true,
   },
-  {
-    path: '/auth/login',
-    title: 'Login',
-    isHidden: true,
-  },
-  {
-    path: '/auth/register',
-    title: 'Register',
-    isHidden: true,
-  },
 ];
